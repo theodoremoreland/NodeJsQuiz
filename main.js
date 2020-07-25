@@ -7,8 +7,17 @@ const input = require('readline-sync');
 
 console.clear();
 const user_name = input.question("Enter your name:  ");
-const correct_answers = fs.readFileSync('resources/answers.txt', 'utf8').split("\n").map((x) => x.trim());
 const questions = fs.readFileSync('resources/questions.txt', 'utf8').split("\n").map((x) => x.trim());
+const correct_answers = fs.readFileSync('resources/answers.txt', 'utf8').split("\n").map((x) => x.trim());
+
+
+// Effects for stdout.
+const blink = '\x1b[5m';
+const cyan = '\x1b[36m';
+const green = '\x1b[32m';
+const yellow = '\x1b[33m';
+const red = '\x1b[31m';
+const colorEscape = '\x1b[0m';
 
 
 function askQuestions(questions) {
@@ -45,7 +54,8 @@ function gradeReport(report, passing_grade) {
     else { number_correct += 1; }
   }
 
-  let pass = score >= passing_grade ? "PASSED" : "FAILED";
+  let pass = score >= passing_grade ? `${green}PASSED${colorEscape}` : `${red}FAILED${colorEscape}`;
+  score = score < 0 ? 0 : score;
 
   return {"score": score, "number_correct": number_correct, "pass": pass};
 }
@@ -68,7 +78,7 @@ function showReport(user_name, report, grade) {
   }
 
   console.log(`
-  >>> Overall Grade: ${grade.score}% (${grade.number_correct} of ${report.length} responses correct) <<<
+  >>> Overall Grade: ${cyan}${grade.score}%${colorEscape} (${grade.number_correct} of ${report.length} responses correct) <<<
   >>> Status: ${grade.pass} <<<`);
 }
 
