@@ -7,6 +7,7 @@ const input = require('readline-sync');
 
 console.clear();
 const user_name = input.question("Enter your name:  ");
+// Converts strings to arrays, then trims whitespace and linebreaks from each element.
 const questions = fs.readFileSync('resources/questions.txt', 'utf8').split("\n").map((x) => x.trim());
 const correct_answers = fs.readFileSync('resources/answers.txt', 'utf8').split("\n").map((x) => x.trim());
 
@@ -21,6 +22,7 @@ const colorEscape = '\x1b[0m';
 
 
 function askQuestions(questions) {
+  console.clear();
   let user_answers = [];
   for (let i = 0; i < questions.length; i++) {
     let user_answer = input.question(questions[i] + " ");
