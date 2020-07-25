@@ -1,16 +1,14 @@
-// Imports
+// Native library
+const fs = require('fs');
+
+// Third party
 const input = require('readline-sync');
+
 
 console.clear();
 const user_name = input.question("Enter your name:  ");
-const correct_answers = ['true', '40', 'trajectory', 'sally ride', '3'];
-const questions = [
-  '1) True or false: 5000 meters = 5 kilometers.'
-  , '2) (5 + 3)/2 * 10 = ?'
-  , '3) Given the array [8, "Orbit", "Trajectory", 45], what entry is at index 2?'
-  , '4) Who was the first American woman in space?'
-  , '5) What is the minimum crew size for the International Space Station (ISS)?'
-];
+const correct_answers = fs.readFileSync('resources/answers.txt', 'utf8').split("\n").map((x) => x.trim());
+const questions = fs.readFileSync('resources/questions.txt', 'utf8').split("\n").map((x) => x.trim());
 
 
 function askQuestions(questions) {
