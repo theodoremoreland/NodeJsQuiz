@@ -45,12 +45,12 @@ function createReport(questions, correct_answers, user_answers, report=[]) {
 
 function gradeReport(report, passing_grade) {
   let score = 100;
-  let mark = 100 / report.length;
+  let to_be_deducted = 100 / report.length; // The number of points deducted for an incorrect answer.
   let number_correct = 0;
    
   for (let i = 0; i < report.length; i++) {
     QnA = report[i];
-    if (QnA["user_answer"] !== QnA["correct_answer"]) { score -= mark; }
+    if (QnA["user_answer"] !== QnA["correct_answer"]) { score -= to_be_deducted; }
     else { number_correct += 1; }
   }
 
@@ -63,7 +63,7 @@ function gradeReport(report, passing_grade) {
 
 function showReport(user_name, report, grade) {
   console.clear();
-  console.log(`\n\tCandidate Name: ${user_name}`);
+  console.log(`\n\tCandidate Name: ${cyan}${user_name}${colorEscape}`);
 
   for (let i = 0; i < report.length; i++) {
     QnA = report[i];
