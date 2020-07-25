@@ -8,9 +8,9 @@ Screenshots of the quiz can be found below.
 
 *This program was a homework assignment at LaunchCode's Lc101 (2019)*
 
-# Enter Candidtate Name
+# Enter Candidate Name
 
-<img src="presentation/1.PNG" width="900">
+<img src="presentation/1.PNG" width="500">
 
 # Answer Questions (Failing attempt)
 
