@@ -12,8 +12,8 @@ const prepData = () => {
   const data = fs.readFileSync("./resources/data.json", "utf8");
   const dataParsed = JSON.parse(data);
   const dataTransformed = dataParsed.map((item) => {
-    // TODO need to get inquirer to ignore period in name as opposed to interpreting it as directory of sorts
-    return { ...item, name: item.message, type: "list" };
+    // Need to replace periods with @ because periods are interpreted as paths in inquirer
+    return { ...item, name: item.message.replaceAll(".", "@"), type: "list" };
   });
 
   return dataTransformed;
