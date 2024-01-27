@@ -1,8 +1,8 @@
 [
   {
-    "question": "What is Node.js?",
+    "message": "What is Node.js?",
     "answer_index": 1,
-    "options": [
+    "choices": [
       "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
       "Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser.",
       "Node.js is a JavaScript-based open-source front-end web application framework mainly maintained by Facebook and a community of individual developers and companies.",
@@ -12,9 +12,9 @@
     "tags": ["standard"]
   },
   {
-    "question": "What is npm?",
+    "message": "What is npm?",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "npm is the package manager for JavaScript and the world's largest software registry. Discover packages of reusable code — and assemble them in powerful new ways.",
       "npm is a tool for automating web browsers.",
       "npm is a JavaScript-based open-source front-end web application framework mainly maintained by Facebook and a community of individual developers and companies.",
@@ -24,9 +24,9 @@
     "tags": ["packages"]
   },
   {
-    "question": "What's the difference between dependencies, devDependencies and peerDependencies in npm package.json file?",
+    "message": "What's the difference between dependencies, devDependencies and peerDependencies in npm package.json file?",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "Dependencies are the packages that are required for your project in production.",
       "Dependencies are the packages that are required for your project in production.",
       "Dependencies are the packages that are required for your project in production.",
@@ -36,9 +36,9 @@
     "tags": ["packages"]
   },
   {
-    "question": "What is the difference between a package.json file and a package-lock.json file?",
+    "message": "What is the difference between a package.json file and a package-lock.json file?",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "package-lock.json is automatically generated for any operations where npm modifies either the node_modules tree, or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees, regardless of intermediate dependency updates.",
       "package-lock.json is automatically generated for any operations where npm modifies either the node_modules tree, or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees, regardless of intermediate dependency updates.",
       "package-lock.json is automatically generated for any operations where npm modifies either the node_modules tree, or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees, regardless of intermediate dependency updates.",
@@ -48,9 +48,9 @@
     "tags": ["packages"]
   },
   {
-    "question": "When would you use the npm ci command?",
+    "message": "When would you use the npm ci command?",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "npm ci is a command that helps you run npm install faster and more reliably in continuous integration environments.",
       "npm ci is a command that helps you run npm install faster and more reliably in continuous integration environments.",
       "npm ci is a command that helps you run npm install faster and more reliably in continuous integration environments.",
@@ -60,16 +60,16 @@
     "tags": ["packages"]
   },
   {
-    "question": "Which one is not a valid node package manager?",
+    "message": "Which one is not a valid node package manager?",
     "answer_index": 0,
-    "options": ["npm", "yarn", "bower", "pnpm"],
+    "choices": ["npm", "yarn", "bower", "pnpm"],
     "difficulty": "easy",
     "tags": ["packages"]
   },
   {
-    "question": "What is the purpose of the eject operation in create-react-app?",
+    "message": "What is the purpose of the eject operation in create-react-app?",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.",
       "If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.",
       "If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.",
@@ -79,9 +79,9 @@
     "tags": ["packages"]
   },
   {
-    "question": "What is global installation of dependencies",
+    "message": "What is global installation of dependencies",
     "answer_index": 1,
-    "options": [
+    "choices": [
       "Global installation of dependencies is when you install a package globally so that all the projects can use it.",
       "Global installation of dependencies is when you install a package globally so that you can run it as a command line tool.",
       "Global installation of dependencies is when you install a package globally so that you can use it in your code.",
@@ -91,9 +91,9 @@
     "tags": ["packages"]
   },
   {
-    "question": "Which is the key benefit of SSR?",
+    "message": "Which is the key benefit of SSR?",
     "answer_index": 2,
-    "options": [
+    "choices": [
       "SSR is faster than CSR",
       "SSR is slower than CSR",
       "SSR is better for SEO",
@@ -103,9 +103,9 @@
     "tags": ["standard"]
   },
   {
-    "question": "Which is NOT a key feature of Node.js?",
+    "message": "Which is NOT a key feature of Node.js?",
     "answer_index": 3,
-    "options": [
+    "choices": [
       "Asynchronous event driven IO helps concurrent request handling",
       "Fast in code execution",
       "Single threaded but highly scalable",
@@ -117,9 +117,9 @@
     "tags": ["standard"]
   },
   {
-    "question": "What is Event Loop",
+    "message": "What is Event Loop",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "Event Loop is a single thread that performs all the operations asynchronously.",
       "Event Loop is a single thread that performs all the operations synchronously.",
       "Event Loop is a multi-thread that performs all the operations asynchronously.",
@@ -129,9 +129,9 @@
     "tags": ["standard"]
   },
   {
-    "question": "What is Event Emitter",
+    "message": "What is Event Emitter",
     "answer_index": 1,
-    "options": [
+    "choices": [
       "Event Emitter is a single thread that performs all the operations asynchronously.",
       "Event Emitter is a single thread that performs all the operations synchronously.",
       "Event Emitter is a multi-thread that performs all the operations asynchronously.",
@@ -141,9 +141,9 @@
     "tags": ["standard"]
   },
   {
-    "question": "What is purpose of Buffer class in Node",
+    "message": "What is purpose of Buffer class in Node",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "Buffer class is used to handle binary data.",
       "Buffer class is used to handle string data.",
       "Buffer class is used to handle number data.",
@@ -153,16 +153,16 @@
     "tags": ["standard"]
   },
   {
-    "question": "Which is not true about Node.js?",
+    "message": "Which is not true about Node.js?",
     "answer_index": 0,
-    "options": ["Node.js is open source", "Node.js is multithread"],
+    "choices": ["Node.js is open source", "Node.js is multithread"],
     "difficulty": "easy",
     "tags": ["standard"]
   },
   {
-    "question": "What is piping in Node?",
+    "message": "What is piping in Node?",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "Piping is a mechanism where we provide the output of one stream as the input to another stream.",
       "Piping is a mechanism where we provide the output of one stream as the input to another stream.",
       "Piping is a mechanism where we provide the output of one stream as the input to another stream.",
@@ -172,9 +172,9 @@
     "tags": ["standard"]
   },
   {
-    "question": "NODE_ENV is used for?",
+    "message": "NODE_ENV is used for?",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "NODE_ENV is an environment variable which is used to specify the environment in which a Node app is executed.",
       "NODE_ENV is an environment variable which is used to specify the environment in which a Node app is executed.",
       "NODE_ENV is an environment variable which is used to specify the environment in which a Node app is executed.",
@@ -184,9 +184,9 @@
     "tags": ["standard"]
   },
   {
-    "question": "What is LTS releases of Node.js why should you care?",
+    "message": "What is LTS releases of Node.js why should you care?",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "LTS stands for Long Term Support. It means that the version of Node.js will be supported for a period of time.",
       "LTS stands for Long Term Support. It means that the version of Node.js will be supported for a period of time.",
       "LTS stands for Long Term Support. It means that the version of Node.js will be supported for a period of time.",
@@ -196,9 +196,9 @@
     "tags": ["standard"]
   },
   {
-    "question": "What is the difference between process.nextTick() and setImmediate()?",
+    "message": "What is the difference between process.nextTick() and setImmediate()?",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "process.nextTick() fires immediately on the same phase, setImmediate() fires on the following iteration or 'tick' of the event loop.",
       "process.nextTick() fires immediately on the same phase, setImmediate() fires on the following iteration or 'tick' of the event loop.",
       "process.nextTick() fires immediately on the same phase, setImmediate() fires on the following iteration or 'tick' of the event loop.",
@@ -208,9 +208,9 @@
     "tags": ["standard"]
   },
   {
-    "question": "Why should you separate Express 'app' and 'server'? ",
+    "message": "Why should you separate Express 'app' and 'server'? ",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "Separation of concerns. You can test 'app' logic without actually listening on a port.",
       "Separation of concerns. You can test 'app' logic without actually listening on a port.",
       "Separation of concerns. You can test 'app' logic without actually listening on a port.",
@@ -220,25 +220,25 @@
     "tags": ["Express.js"]
   },
   {
-    "question": "How many threads does Node actually create?",
+    "message": "How many threads does Node actually create?",
     "answer_index": 0,
-    "options": [""],
+    "choices": [""],
     "difficulty": "easy",
     "tags": ["standard"]
   },
   {
-    "question": "The V8 engine...",
+    "message": "The V8 engine...",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "V8 is a JavaScript engine built at the google development center, in Germany. It is open source and written in C++. It is used for both client side (Google Chrome) and server side (node.js) JavaScript applications. V8 was first designed to increase the performance of the JavaScript execution inside web browsers. In order to obtain speed, V8 translates JavaScript code into more efficient machine code instead of using an interpreter. It compiles JavaScript code into machine code at execution by implementing a JIT (Just-In-Time) compiler like a lot of modern JavaScript engines such as SpiderMonkey or Rhino (Mozilla) are doing. The main difference with V8 is that it doesn't produce bytecode or any intermediate code."
     ],
     "difficulty": "easy",
     "tags": ["standard"]
   },
   {
-    "question": "How does Node.js handle concurrency?",
+    "message": "How does Node.js handle concurrency?",
     "answer_index": 0,
-    "options": [
+    "choices": [
       "Node.js is a single-threaded application, but it can support concurrency via the concept of event and callbacks. Every API of Node.js is asynchronous and being single-threaded, they use async function calls to maintain concurrency. Node uses observer pattern. Node thread keeps an event loop and whenever a task gets completed, it fires the corresponding event which signals the event-listener function to execute."
     ],
     "difficulty": "easy",
