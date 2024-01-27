@@ -8,7 +8,7 @@ import inquirer from "inquirer";
  * Prepares data for inquirer
  * @returns {Array} dataTransformed
  */
-const prepDataForInquirer = () => {
+export const prepDataForInquirer = () => {
   const data = fs.readFileSync("./resources/data.json", "utf8");
   const dataParsed = JSON.parse(data);
   const dataTransformed = dataParsed.map((item) => {
@@ -21,7 +21,7 @@ const prepDataForInquirer = () => {
 
 /**
  * Prompts user for topics
- * @returns {String} answer
+ * @returns {Promise<String>} answer
  */
 const promptUserForTopics = async () => {
   const data = [
@@ -40,7 +40,7 @@ const promptUserForTopics = async () => {
 
 /**
  * Prompts user for difficulty
- * @returns {String} answer
+ * @returns {Promise<String>} answer
  */
 const promptUserForDifficulty = async () => {
   const data = [
@@ -64,23 +64,33 @@ const promptUserForDifficulty = async () => {
  * @param {String} topic
  * @returns {Array} filtered data
  */
-const filterData = (data, difficulty, topic) => {
+export const filterData = (data, difficulty, topics) => {
   return data.filter((item) => {
-    const itemTopics = item.topics.map((topic) => topic.toLowerCase());
-    const itemDifficulty = item.difficulty.toLowerCase();
+    const itemTopics = item.topics?.map((topic) => topic.toLowerCase());
+    const itemDifficulty = item.difficulty?.toLowerCase();
+    topics = topics.map((topic) => topic.toLowerCase());
 
     if (itemTopics === undefined || itemDifficulty === undefined) {
-      throw new Error(`Topics or difficulty is undefined for ${item.message}`);
+      throw new Error(
+        `Topics or difficulty is undefined for ${item.message}\n{itemTopics: ${itemTopics}, itemDifficulty: ${itemDifficulty}}`
+      );
     }
 
-    return itemTopics.includes(topic) && itemDifficulty === difficulty;
+    const isTopicIncluded = itemTopics.some((topic) =>
+      topics.includes(topic.toLowerCase())
+    );
+    const isDifficultyEqual = itemDifficulty === difficulty.toLowerCase();
+
+    return isTopicIncluded && isDifficultyEqual;
   });
 };
 
 const main = async () => {
   const data = prepDataForInquirer();
-
-  const answers = await inquirer.prompt(data);
+  const topics = await promptUserForTopics();
+  const difficulty = await promptUserForDifficulty();
+  const filteredData = filterData(data, difficulty, topics);
+  const answers = await inquirer.prompt(filteredData);
 
   console.log(answers);
 };
