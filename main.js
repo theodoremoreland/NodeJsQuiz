@@ -1,8 +1,8 @@
 // Native library
-const fs = require("fs");
+import fs from "fs";
 
 // Third party
-const input = require("inquirer");
+import inquirer from "inquirer";
 
 // Effects for stdout.
 const blink = "\x1b[5m";
