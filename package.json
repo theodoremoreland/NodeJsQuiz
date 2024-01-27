@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/theodoremoreland/NodeJsQuiz#readme",
   "dependencies": {
-    "readline-sync": "^1.4.10"
+    "inquirer": "^9.2.12"
   }
 }

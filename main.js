@@ -2,7 +2,7 @@
 const fs = require("fs");
 
 // Third party
-const input = require("readline-sync");
+const input = require("inquirer");
 
 // Effects for stdout.
 const blink = "\x1b[5m";
@@ -12,13 +12,12 @@ const yellow = "\x1b[33m";
 const red = "\x1b[31m";
 const colorEscape = "\x1b[0m";
 
-function askQuestions(questions) {
-  console.clear();
-
+function askQuestions(data) {
   const user_answers = [];
 
-  for (let i = 0; i < questions.length; i++) {
-    const user_answer = input.question(questions[i] + " ");
+  for (let i = 0; i < data.length; i++) {
+    const questionMetadata = data[i];
+    const user_answer = input.question(questionMetadata.question + " ");
 
     user_answers.push(user_answer);
   }
@@ -70,8 +69,11 @@ function gradeReport(report, passing_grade) {
 }
 
 function showReport(user_name, report, grade) {
-  console.clear();
-  console.log(`\n\tCandidate Name: ${cyan}${user_name}${colorEscape}`);
+  let report_header = `\n\tCandidate Name: ${cyan}${user_name}${colorEscape}`;
+  let report_body = "";
+  let report_footer = `
+  >>> Overall Grade: ${cyan}${grade.score}%${colorEscape} (${grade.number_correct} of ${report.length} responses correct) <<<
+  >>> Status: ${grade.pass} <<<`;
 
   for (let i = 0; i < report.length; i++) {
     const QnA = report[i];
@@ -79,15 +81,12 @@ function showReport(user_name, report, grade) {
     const user_answer = QnA["user_answer"];
     const correct_answer = QnA["correct_answer"];
 
-    console.log(`
-    ${question}
+    report_body += `${question}
     Your Answer: ${user_answer}
-    Correct Answer: ${correct_answer}`);
+    Correct Answer: ${correct_answer}`;
   }
 
-  console.log(`
-  >>> Overall Grade: ${cyan}${grade.score}%${colorEscape} (${grade.number_correct} of ${report.length} responses correct) <<<
-  >>> Status: ${grade.pass} <<<`);
+  return `${report_header}${report_body}${report_footer}`;
 }
 
 function main() {
@@ -95,18 +94,19 @@ function main() {
 
   const user_name = input.question("Enter your name:  ");
   // Converts strings to arrays, then trims whitespace and line breaks from each element.
-  const questions = fs
-    .readFileSync("resources/questions.txt", "utf8")
-    .split("\n")
-    .map((x) => x.trim());
-  const correct_answers = fs
-    .readFileSync("resources/answers.txt", "utf8")
-    .split("\n")
-    .map((x) => x.trim());
+  const data = fs.readFileSync("resources/data.json", "utf8");
 
-  const user_answers = askQuestions(questions);
-  const report = createReport(questions, correct_answers, user_answers);
+  const dataJSON = JSON.parse(data);
+
+  console.log(dataJSON);
+
+  console.clear();
+
+  const user_answers = askQuestions(dataJSON);
+  const report = createReport(dataJSON, correct_answers, user_answers);
   const grade = gradeReport(report, 80);
+
+  console.clear();
 
   showReport(user_name, report, grade);
 }
