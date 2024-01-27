@@ -1,5 +1,5 @@
 {
-  "name": "candidatetesting",
+  "name": "nodejs-quiz",
   "version": "1.0.0",
   "description": "*This program was a homework assignment at LaunchCode's Lc101 (2019)*",
   "main": "main.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theodoremoreland/CandidateTesting.git"
+    "url": "git+https://github.com/theodoremoreland/NodeJsQuiz.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/theodoremoreland/CandidateTesting/issues"
+    "url": "https://github.com/theodoremoreland/NodeJsQuiz/issues"
   },
-  "homepage": "https://github.com/theodoremoreland/CandidateTesting#readme",
+  "homepage": "https://github.com/theodoremoreland/NodeJsQuiz#readme",
   "dependencies": {
     "readline-sync": "^1.4.10"
   }
