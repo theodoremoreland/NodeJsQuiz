@@ -116,6 +116,7 @@ const promptUserForDifficulty = async () => {
 
 const generateReport = (answers, data) => {
   const report = [];
+  let score = 100;
 
   for (let i = 0; i < data.length; i++) {
     const question = data[i];
@@ -124,9 +125,9 @@ const generateReport = (answers, data) => {
 
     report.push({
       question: question.message,
-      correctAnswer,
       answer,
       isCorrect: correctAnswer === answer,
+      score: correctAnswer === answer ? score : (score -= score / data.length),
     });
   }
 
