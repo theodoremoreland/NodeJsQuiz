@@ -4,16 +4,21 @@ import fs from "fs";
 // Third party
 import inquirer from "inquirer";
 
-/**
- * Prepares data for inquirer
- * @returns {Array} dataTransformed
- */
-export const prepDataForInquirer = () => {
+export const getData = () => {
   const data = fs.readFileSync("./resources/data.json", "utf8");
   const dataParsed = JSON.parse(data);
-  const dataTransformed = dataParsed.map((item) => {
-    // Need to replace periods with @ because periods are interpreted as paths in inquirer
-    return { ...item, name: item.message.replaceAll(".", "@"), type: "list" };
+
+  return dataParsed;
+};
+
+/**
+ * Prepares data for inquirer
+ * @param {Array} data
+ * @returns {Array} dataTransformed
+ */
+export const prepDataForInquirer = (data) => {
+  const dataTransformed = data.map((item, index) => {
+    return { ...item, name: index };
   });
 
   return dataTransformed;
@@ -48,7 +53,7 @@ const promptUserForDifficulty = async () => {
       type: "list",
       name: "difficulty",
       message: "What difficulty would you like to play?",
-      choices: ["Easy", "Medium", "Hard"],
+      choices: ["Easy", "Moderate"],
     },
   ];
 
@@ -93,11 +98,12 @@ export const filterData = (data, difficulty, topics) => {
 };
 
 const main = async () => {
-  const data = prepDataForInquirer();
+  const data = getData();
   const topics = await promptUserForTopics();
   const difficulty = await promptUserForDifficulty();
   const filteredData = filterData(data, difficulty, topics);
-  const answers = await inquirer.prompt(filteredData);
+  const preppedData = prepDataForInquirer(filteredData);
+  const answers = await inquirer.prompt(preppedData);
 
   console.log(answers);
 };
