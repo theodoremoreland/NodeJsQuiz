@@ -10,7 +10,7 @@
       "Node.js library uses JavaScript",
       "No Buffering"
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
@@ -22,7 +22,7 @@
       "Event Loop is a multi-thread that performs all the operations asynchronously.",
       "Event Loop is a multi-thread that performs all the operations synchronously."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
@@ -34,7 +34,7 @@
       "Event Emitter is a multi-thread that performs all the operations asynchronously.",
       "Event Emitter is a multi-thread that performs all the operations synchronously."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
@@ -46,14 +46,14 @@
       "Buffer class is used to handle number data.",
       "Buffer class is used to handle boolean data."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
     "message": "Which is not true about Node.js?",
     "answer_index": 0,
     "choices": ["Node.js is open source", "Node.js is multithreaded"],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
@@ -65,7 +65,7 @@
       "Piping is a mechanism where we provide the output of one stream as the input to another stream.",
       "Piping is a mechanism where we provide the output of one stream as the input to another stream."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
@@ -77,7 +77,7 @@
       "NODE_ENV is an environment variable which is used to specify the environment in which a Node app is executed.",
       "NODE_ENV is an environment variable which is used to specify the environment in which a Node app is executed."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
@@ -89,7 +89,7 @@
       "LTS stands for Long Term Support. It means that the version of Node.js will be supported for a period of time.",
       "LTS stands for Long Term Support. It means that the version of Node.js will be supported for a period of time."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
@@ -101,14 +101,14 @@
       "process.nextTick() fires immediately on the same phase, setImmediate() fires on the following iteration or 'tick' of the event loop.",
       "process.nextTick() fires immediately on the same phase, setImmediate() fires on the following iteration or 'tick' of the event loop."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
     "message": "How many threads does Node.js actually create?",
     "answer_index": 0,
     "choices": ["1", "4", "3"],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
@@ -117,7 +117,7 @@
     "choices": [
       "V8 is a JavaScript engine built at the google development center, in Germany. It is open source and written in C++. It is used for both client side (Google Chrome) and server side (Node.js) JavaScript applications. V8 was first designed to increase the performance of the JavaScript execution inside web browsers. In order to obtain speed, V8 translates JavaScript code into more efficient machine code instead of using an interpreter. It compiles JavaScript code into machine code at execution by implementing a JIT (Just-In-Time) compiler like a lot of modern JavaScript engines such as SpiderMonkey or Rhino (Mozilla) are doing. The main difference with V8 is that it doesn't produce bytecode or any intermediate code."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
@@ -126,7 +126,7 @@
     "choices": [
       "Node.js is a single-threaded application, but it can support concurrency via the concept of event and callbacks. Every API of Node.js is asynchronous and being single-threaded, they use async function calls to maintain concurrency. Node.js uses observer pattern. Node.js thread keeps an event loop and whenever a task gets completed, it fires the corresponding event which signals the event-listener function to execute."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
@@ -138,7 +138,7 @@
       "Node.js is a JavaScript-based open-source front-end web application framework mainly maintained by Facebook and a community of individual developers and companies.",
       "Node.js is a tool for automating web browsers."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
@@ -150,7 +150,7 @@
       "npm is a JavaScript-based open-source front-end web application framework mainly maintained by Facebook and a community of individual developers and companies.",
       "npm is a JavaScript runtime built on Chrome's V8 JavaScript engine."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Packages"]
   },
   {
@@ -162,7 +162,7 @@
       "Dependencies are the packages that are required for your project in production.",
       "Dependencies are the packages that are required for your project in production."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Packages"]
   },
   {
@@ -174,7 +174,7 @@
       "package-lock.json is automatically generated for any operations where npm modifies either the node_modules tree, or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees, regardless of intermediate dependency updates.",
       "package-lock.json is automatically generated for any operations where npm modifies either the node_modules tree, or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees, regardless of intermediate dependency updates."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Packages"]
   },
   {
@@ -186,14 +186,14 @@
       "npm ci is a command that helps you run npm install faster and more reliably in continuous integration environments.",
       "npm ci is a command that helps you run npm install faster and more reliably in continuous integration environments."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Packages"]
   },
   {
     "message": "Which one is not a valid Node.js package manager?",
     "answer_index": 0,
     "choices": ["npm", "yarn", "bower", "pnpm"],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Packages"]
   },
   {
@@ -205,7 +205,7 @@
       "If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.",
       "If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Packages"]
   },
   {
@@ -217,7 +217,7 @@
       "Global installation of dependencies is when you install a package globally so that you can use it in your code.",
       "Global installation of dependencies is when you install a package globally so that you can use it in your code."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Packages"]
   },
 
@@ -230,7 +230,7 @@
       "Separation of concerns. You can test 'app' logic without actually listening on a port.",
       "Separation of concerns. You can test 'app' logic without actually listening on a port."
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
   },
   {
@@ -242,7 +242,7 @@
       "SSR is better for SEO",
       "SSR is better for security"
     ],
-    "difficulty": "easy",
+    "difficulty": "moderate",
     "topics": ["Standard", "Web Development"]
   }
 ]

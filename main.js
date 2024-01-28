@@ -83,8 +83,9 @@ const promptUserForTopics = async () => {
     {
       type: "checkbox",
       name: "topics",
-      message: "What topics would you like to be quizzed on?",
-      choices: ["Express.js", "Packages", "Standard"],
+      message: "Which topics would you like to be quizzed on?",
+      choices: ["Standard", "Packages", "Express.js"],
+      default: ["Standard", "Packages", "Express.js"],
     },
   ];
 
@@ -103,7 +104,8 @@ const promptUserForDifficulty = async () => {
       type: "list",
       name: "difficulty",
       message: "What difficulty would you like to play?",
-      choices: ["Easy", "Moderate"],
+      choices: ["Moderate"],
+      default: "Moderate",
     },
   ];
 
