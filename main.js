@@ -65,10 +65,11 @@ const promptUserForDifficulty = async () => {
  * @returns {Array} filtered data
  */
 export const filterData = (data, difficulty, topics) => {
-  return data.filter((item) => {
+  const filteredData = data.filter((item) => {
     const itemTopics = item.topics?.map((topic) => topic.toLowerCase());
     const itemDifficulty = item.difficulty?.toLowerCase();
     topics = topics.map((topic) => topic.toLowerCase());
+    difficulty = difficulty.toLowerCase();
 
     if (itemTopics === undefined || itemDifficulty === undefined) {
       throw new Error(
@@ -79,10 +80,16 @@ export const filterData = (data, difficulty, topics) => {
     const isTopicIncluded = itemTopics.some((topic) =>
       topics.includes(topic.toLowerCase())
     );
-    const isDifficultyEqual = itemDifficulty === difficulty.toLowerCase();
+    const isDifficultyEqual = itemDifficulty === difficulty;
 
     return isTopicIncluded && isDifficultyEqual;
   });
+
+  if (filteredData.length === 0) {
+    throw new Error(
+      `No data found for topics: ${topics} and difficulty: ${difficulty}`
+    );
+  }
 };
 
 const main = async () => {
