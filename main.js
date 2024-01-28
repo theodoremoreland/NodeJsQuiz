@@ -18,7 +18,7 @@ export const getData = () => {
  */
 export const prepDataForInquirer = (data) => {
   const dataTransformed = data.map((item, index) => {
-    return { ...item, name: index };
+    return { ...item, name: String(index), type: "list" };
   });
 
   return dataTransformed;
@@ -95,6 +95,8 @@ export const filterData = (data, difficulty, topics) => {
       `No data found for topics: ${topics} and difficulty: ${difficulty}`
     );
   }
+
+  return filteredData;
 };
 
 const main = async () => {
@@ -102,7 +104,8 @@ const main = async () => {
   const topics = await promptUserForTopics();
   const difficulty = await promptUserForDifficulty();
   const filteredData = filterData(data, difficulty, topics);
-  const preppedData = prepDataForInquirer(filteredData);
+  const dataRandomized = filteredData.sort(() => Math.random() - 0.5);
+  const preppedData = prepDataForInquirer(dataRandomized);
   const answers = await inquirer.prompt(preppedData);
 
   console.log(answers);
