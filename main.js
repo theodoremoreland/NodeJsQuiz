@@ -114,6 +114,25 @@ const promptUserForDifficulty = async () => {
   return answer.difficulty;
 };
 
+const generateReport = (answers, data) => {
+  const report = [];
+
+  for (let i = 0; i < data.length; i++) {
+    const question = data[i];
+    const correctAnswer = question.choices[question.correct_answer_index];
+    const answer = answers[String(i)];
+
+    report.push({
+      question: question.message,
+      correctAnswer,
+      answer,
+      isCorrect: correctAnswer === answer,
+    });
+  }
+
+  return report;
+};
+
 const main = async () => {
   const data = getData();
   const topics = await promptUserForTopics();
@@ -123,7 +142,9 @@ const main = async () => {
   const preppedData = prepDataForInquirer(dataRandomized);
   const answers = await inquirer.prompt(preppedData);
 
-  console.log(answers);
+  const report = generateReport(answers, preppedData);
+
+  console.log(report);
 };
 
 main();
