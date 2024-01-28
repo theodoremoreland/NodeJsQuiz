@@ -4,11 +4,61 @@ import fs from "fs";
 // Third party
 import inquirer from "inquirer";
 
+/**
+ * Gets data from data.json
+ * @returns {Array} data
+ */
 export const getData = () => {
   const data = fs.readFileSync("./resources/data.json", "utf8");
   const dataParsed = JSON.parse(data);
 
   return dataParsed;
+};
+
+/**
+ * Filters data based on provided difficulty and topic
+ * @param {Array} data
+ * @param {String} difficulty
+ * @param {String} topic
+ * @returns {Array} filtered data
+ */
+export const filterData = (data, difficulty, topics) => {
+  const filteredData = data.filter((item) => {
+    const itemTopics = item.topics?.map((topic) => topic.toLowerCase());
+    const itemDifficulty = item.difficulty?.toLowerCase();
+    topics = topics.map((topic) => topic.toLowerCase());
+    difficulty = difficulty.toLowerCase();
+
+    if (itemTopics === undefined || itemDifficulty === undefined) {
+      throw new Error(
+        `Topics or difficulty is undefined for ${item.message}\n{itemTopics: ${itemTopics}, itemDifficulty: ${itemDifficulty}}`
+      );
+    }
+
+    const isTopicIncluded = itemTopics.some((topic) =>
+      topics.includes(topic.toLowerCase())
+    );
+    const isDifficultyEqual = itemDifficulty === difficulty;
+
+    return isTopicIncluded && isDifficultyEqual;
+  });
+
+  if (filteredData.length === 0) {
+    throw new Error(
+      `No data found for topics: ${topics} and difficulty: ${difficulty}`
+    );
+  }
+
+  return filteredData;
+};
+
+/**
+ * Randomizes data
+ * @param {Array} data
+ * @returns {Array} data randomized
+ */
+const randomizeData = (data) => {
+  return data.sort(() => Math.random() - 0.5);
 };
 
 /**
@@ -62,49 +112,12 @@ const promptUserForDifficulty = async () => {
   return answer.difficulty;
 };
 
-/**
- * Filters data based on provided difficulty and topic
- * @param {Array} data
- * @param {String} difficulty
- * @param {String} topic
- * @returns {Array} filtered data
- */
-export const filterData = (data, difficulty, topics) => {
-  const filteredData = data.filter((item) => {
-    const itemTopics = item.topics?.map((topic) => topic.toLowerCase());
-    const itemDifficulty = item.difficulty?.toLowerCase();
-    topics = topics.map((topic) => topic.toLowerCase());
-    difficulty = difficulty.toLowerCase();
-
-    if (itemTopics === undefined || itemDifficulty === undefined) {
-      throw new Error(
-        `Topics or difficulty is undefined for ${item.message}\n{itemTopics: ${itemTopics}, itemDifficulty: ${itemDifficulty}}`
-      );
-    }
-
-    const isTopicIncluded = itemTopics.some((topic) =>
-      topics.includes(topic.toLowerCase())
-    );
-    const isDifficultyEqual = itemDifficulty === difficulty;
-
-    return isTopicIncluded && isDifficultyEqual;
-  });
-
-  if (filteredData.length === 0) {
-    throw new Error(
-      `No data found for topics: ${topics} and difficulty: ${difficulty}`
-    );
-  }
-
-  return filteredData;
-};
-
 const main = async () => {
   const data = getData();
   const topics = await promptUserForTopics();
   const difficulty = await promptUserForDifficulty();
   const filteredData = filterData(data, difficulty, topics);
-  const dataRandomized = filteredData.sort(() => Math.random() - 0.5);
+  const dataRandomized = randomizeData(filteredData);
   const preppedData = prepDataForInquirer(dataRandomized);
   const answers = await inquirer.prompt(preppedData);
 
