@@ -5,8 +5,7 @@ import fs from "fs";
 import inquirer from "inquirer";
 
 // Custom
-import { cyan, green, red, yellow, blink } from "./modules/colors.js";
-import { log } from "console";
+import { green, red, blink } from "./modules/colors.js";
 
 /**
  * Gets data from data.json
