@@ -173,7 +173,6 @@ const main = async () => {
     const dataRandomized = randomizeData(filteredData);
     const preppedData = prepDataForInquirer(dataRandomized);
     const answers = await inquirer.prompt(preppedData);
-
     const report = generateReport(answers, preppedData);
 
     logResult(report);
