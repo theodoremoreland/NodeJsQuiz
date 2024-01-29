@@ -4,6 +4,9 @@ import fs from "fs";
 // Third party
 import inquirer from "inquirer";
 
+// Custom
+import { cyan, green, red, yellow, blink } from "./modules/colors.js";
+
 /**
  * Gets data from data.json
  * @returns {Array} data
