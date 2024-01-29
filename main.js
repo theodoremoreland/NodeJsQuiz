@@ -6,6 +6,7 @@ import inquirer from "inquirer";
 
 // Custom
 import { cyan, green, red, yellow, blink } from "./modules/colors.js";
+import { log } from "console";
 
 /**
  * Gets data from data.json
@@ -60,7 +61,7 @@ export const filterData = (data, difficulty, topics) => {
  * @param {Array} data
  * @returns {Array} data randomized
  */
-const randomizeData = (data) => {
+export const randomizeData = (data) => {
   return data.sort(() => Math.random() - 0.5);
 };
 
@@ -137,6 +138,29 @@ const generateReport = (answers, data) => {
   return report;
 };
 
+/**
+ * Logs result to console
+ * @param {Array} report
+ * @returns {void}
+ */
+const logResult = (report) => {
+  const correctAnswers = report.filter((item) => item.isCorrect);
+  const incorrectAnswers = report.filter((item) => !item.isCorrect);
+  const score = report[report.length - 1].score.toFixed(2);
+  const questionsAnsweredIncorrectly = incorrectAnswers
+    .map((report) => `- ${report.question}`)
+    .join("\n");
+
+  console.clear();
+  console.log(`\n\nCorrect answers: ${correctAnswers.length}`);
+  console.log(`Incorrect answers: ${incorrectAnswers.length}`);
+  console.log(blink(`Grade: ${score}%`));
+  console.log(`${score >= 70 ? green("Passed") : red("Failed")}`);
+  console.log(
+    `\nQuestions answered incorrectly:\n${red(questionsAnsweredIncorrectly)}`
+  );
+};
+
 const main = async () => {
   const data = getData();
   const topics = await promptUserForTopics();
@@ -148,7 +172,7 @@ const main = async () => {
 
   const report = generateReport(answers, preppedData);
 
-  console.log(report);
+  logResult(report);
 };
 
 main();
