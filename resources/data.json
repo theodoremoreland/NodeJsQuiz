@@ -14,7 +14,7 @@
     "topics": ["Standard"]
   },
   {
-    "message": "What is Event Loop",
+    "message": "What is the Event Loop?",
     "correct_answer_index": 0,
     "choices": [
       "Event Loop is a single thread that performs all the operations asynchronously.",
@@ -26,7 +26,7 @@
     "topics": ["Standard"]
   },
   {
-    "message": "What is Event Emitter",
+    "message": "What is an Event Emitter?",
     "correct_answer_index": 1,
     "choices": [
       "Event Emitter is a single thread that performs all the operations asynchronously.",
@@ -38,7 +38,7 @@
     "topics": ["Standard"]
   },
   {
-    "message": "What is purpose of Buffer class in Node.js",
+    "message": "What is the purpose of the Buffer class?",
     "correct_answer_index": 0,
     "choices": [
       "Buffer class is used to handle binary data.",
@@ -50,14 +50,7 @@
     "topics": ["Standard"]
   },
   {
-    "message": "Which is not true about Node.js?",
-    "correct_answer_index": 0,
-    "choices": ["Node.js is open source", "Node.js is multithreaded"],
-    "difficulty": "moderate",
-    "topics": ["Standard"]
-  },
-  {
-    "message": "What is piping in Node.js?",
+    "message": "What is piping?",
     "correct_answer_index": 0,
     "choices": [
       "Piping is a mechanism where we provide the output of one stream as the input to another stream.",
@@ -81,41 +74,10 @@
     "topics": ["Standard"]
   },
   {
-    "message": "What is LTS releases of Node.js why should you care?",
-    "correct_answer_index": 0,
-    "choices": [
-      "LTS stands for Long Term Support. It means that the version of Node.js will be supported for a period of time.",
-      "LTS stands for Long Term Support. It means that the version of Node.js will be supported for a period of time.",
-      "LTS stands for Long Term Support. It means that the version of Node.js will be supported for a period of time.",
-      "LTS stands for Long Term Support. It means that the version of Node.js will be supported for a period of time."
-    ],
-    "difficulty": "moderate",
-    "topics": ["Standard"]
-  },
-  {
-    "message": "What is the difference between process.nextTick() and setImmediate()?",
-    "correct_answer_index": 0,
-    "choices": [
-      "process.nextTick() fires immediately on the same phase, setImmediate() fires on the following iteration or 'tick' of the event loop.",
-      "process.nextTick() fires immediately on the same phase, setImmediate() fires on the following iteration or 'tick' of the event loop.",
-      "process.nextTick() fires immediately on the same phase, setImmediate() fires on the following iteration or 'tick' of the event loop.",
-      "process.nextTick() fires immediately on the same phase, setImmediate() fires on the following iteration or 'tick' of the event loop."
-    ],
-    "difficulty": "moderate",
-    "topics": ["Standard"]
-  },
-  {
-    "message": "How many threads does Node.js actually create?",
-    "correct_answer_index": 0,
-    "choices": ["1", "4", "3"],
-    "difficulty": "moderate",
-    "topics": ["Standard"]
-  },
-  {
     "message": "The V8 engine...",
     "correct_answer_index": 0,
     "choices": [
-      "V8 is a JavaScript engine built at the google development center, in Germany. It is open source and written in C++. It is used for both client side (Google Chrome) and server side (Node.js) JavaScript applications. V8 was first designed to increase the performance of the JavaScript execution inside web browsers. In order to obtain speed, V8 translates JavaScript code into more efficient machine code instead of using an interpreter. It compiles JavaScript code into machine code at execution by implementing a JIT (Just-In-Time) compiler like a lot of modern JavaScript engines such as SpiderMonkey or Rhino (Mozilla) are doing. The main difference with V8 is that it doesn't produce bytecode or any intermediate code."
+      "Is an open source JS engine written in C++. V8 translates JavaScript code into machine code instead of using an interpreter. It compiles JavaScript code into machine code at execution by implementing a JIT (Just-In-Time) compiler."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -125,18 +87,6 @@
     "correct_answer_index": 0,
     "choices": [
       "Node.js is a single-threaded application, but it can support concurrency via the concept of event and callbacks. Every API of Node.js is asynchronous and being single-threaded, they use async function calls to maintain concurrency. Node.js uses observer pattern. Node.js thread keeps an event loop and whenever a task gets completed, it fires the corresponding event which signals the event-listener function to execute."
-    ],
-    "difficulty": "moderate",
-    "topics": ["Standard"]
-  },
-  {
-    "message": "What is Node.js?",
-    "correct_answer_index": 1,
-    "choices": [
-      "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
-      "Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser.",
-      "Node.js is a JavaScript-based open-source front-end web application framework mainly maintained by Facebook and a community of individual developers and companies.",
-      "Node.js is a tool for automating web browsers."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -154,7 +104,7 @@
     "topics": ["Packages"]
   },
   {
-    "message": "What's the difference between dependencies, devDependencies and peerDependencies in npm package.json file?",
+    "message": "What's the difference between dependencies, devDependencies and peerDependencies?",
     "correct_answer_index": 0,
     "choices": [
       "Dependencies are the packages that are required for your project in production.",
@@ -190,21 +140,9 @@
     "topics": ["Packages"]
   },
   {
-    "message": "Which one is not a valid Node.js package manager?",
-    "correct_answer_index": 0,
-    "choices": ["npm", "yarn", "bower", "pnpm"],
-    "difficulty": "moderate",
-    "topics": ["Packages"]
-  },
-  {
-    "message": "What is the purpose of the eject operation in create-react-app?",
-    "correct_answer_index": 0,
-    "choices": [
-      "If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.",
-      "If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.",
-      "If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.",
-      "If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project."
-    ],
+    "message": "Which one is NOT a Node.js package manager?",
+    "correct_answer_index": 2,
+    "choices": ["npm", "yarn", "deno", "pnpm"],
     "difficulty": "moderate",
     "topics": ["Packages"]
   },
@@ -220,9 +158,8 @@
     "difficulty": "moderate",
     "topics": ["Packages"]
   },
-
   {
-    "message": "Why should you separate Express 'app' and 'server'? ",
+    "message": "Why should you separate Express 'app' and 'server'?",
     "correct_answer_index": 0,
     "choices": [
       "Separation of concerns. You can test 'app' logic without actually listening on a port.",
@@ -234,15 +171,55 @@
     "topics": ["Express.js", "Web Development"]
   },
   {
-    "message": "Which is the key benefit of SSR?",
-    "correct_answer_index": 2,
+    "message": "What is middleware in Express.js?",
+    "correct_answer_index": 0,
     "choices": [
-      "SSR is faster than CSR",
-      "SSR is slower than CSR",
-      "SSR is better for SEO",
-      "SSR is better for security"
+      "Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle."
     ],
     "difficulty": "moderate",
-    "topics": ["Standard", "Web Development"]
+    "topics": ["Express.js", "Web Development"]
+  },
+  {
+    "message": "How do you render plain HTML in Express.js?",
+    "correct_answer_index": 0,
+    "choices": ["res.sendFile()"],
+    "difficulty": "moderate",
+    "topics": ["Express.js", "Web Development"]
+  },
+  {
+    "message": "When would you use app.use()?",
+    "correct_answer_index": 0,
+    "choices": [
+      "app.use() is used to mount the specified middleware function(s) at the path which is being specified."
+    ],
+    "difficulty": "moderate",
+    "topics": ["Express.js", "Web Development"]
+  },
+  {
+    "message": "What is Express.js?",
+    "correct_answer_index": 0,
+    "choices": [
+      "A web framework that simplifies Node's web server APIs and makes it easier to organize with middleware and routing"
+    ],
+    "difficulty": "moderate",
+    "topics": ["Express.js", "Web Development"]
+  },
+  {
+    "message": "Differentiate between res.send() and res.json()",
+    "correct_answer_index": 0,
+    "choices": [
+      "res.send() can send any type of response, while res.json() sends a JSON response."
+    ],
+    "difficulty": "moderate",
+    "topics": ["Express.js", "Web Development"]
+  },
+  {
+    "message": "What is scaffolding in Express.js?",
+    "correct_answer_index": 0,
+    "choices": [
+      "Scaffolding is the automatic generation of a basic directory structure for a new application."
+    ],
+    "difficulty": "moderate",
+    "topics": ["Express.js", "Web Development"]
   }
 ]
