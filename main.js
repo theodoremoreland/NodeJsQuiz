@@ -162,16 +162,35 @@ const logResult = (report) => {
 
 const main = async () => {
   const data = getData();
-  const topics = await promptUserForTopics();
-  const difficulty = await promptUserForDifficulty();
-  const filteredData = filterData(data, difficulty, topics);
-  const dataRandomized = randomizeData(filteredData);
-  const preppedData = prepDataForInquirer(dataRandomized);
-  const answers = await inquirer.prompt(preppedData);
+  let takeQuiz = true;
 
-  const report = generateReport(answers, preppedData);
+  while (takeQuiz) {
+    console.clear();
 
-  logResult(report);
+    const topics = await promptUserForTopics();
+    const difficulty = await promptUserForDifficulty();
+    const filteredData = filterData(data, difficulty, topics);
+    const dataRandomized = randomizeData(filteredData);
+    const preppedData = prepDataForInquirer(dataRandomized);
+    const answers = await inquirer.prompt(preppedData);
+
+    const report = generateReport(answers, preppedData);
+
+    logResult(report);
+
+    // Need to wrap await with parentheses as to access the retake property after the promise resolves
+    takeQuiz = (
+      await inquirer.prompt([
+        {
+          type: "confirm",
+          name: "retake",
+          message: `${blink("Would you like to retake the quiz")}?`,
+          default: false,
+          prefix: "\n\n",
+        },
+      ])
+    ).retake;
+  }
 };
 
 main();
