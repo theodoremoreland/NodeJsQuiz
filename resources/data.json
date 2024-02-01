@@ -99,7 +99,7 @@
     "message": "When would you use the npm ci command?",
     "correct_answer_index": 0,
     "choices": [
-      "It is used to clean install dependencies, which attempts to install node_modules from scratch, following the package-lock or shrinkwrap files without modifying them."
+      "It is used to clean install dependencies. ci attempts to install node_modules from scratch, following the package-lock or shrinkwrap files without modifying them."
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -117,6 +117,15 @@
     "choices": [
       "Global installation of dependencies is when you install a package globally so that all the projects can use it.",
       "Global installation of dependencies is when you install a package globally so that you can run it as a command line tool."
+    ],
+    "difficulty": "moderate",
+    "topics": ["Packages"]
+  },
+  {
+    "message": "The purpose of npm audit is to...",
+    "correct_answer_index": 1,
+    "choices": [
+      "request a report of known vulnerabilities within dependencies. If vulnerabilities are found, the impact and appropriate remediation is calculated. If the fix argument is provided, remediation will be applied to the dependencies."
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -140,9 +149,11 @@
     "topics": ["Express.js", "Web Development"]
   },
   {
-    "message": "How do you render plain HTML in Express.js?",
+    "message": "What is the purpose of the next() function in Express.js?",
     "correct_answer_index": 0,
-    "choices": ["res.sendFile()"],
+    "choices": [
+      "Invokes the next middleware function in the app. If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function."
+    ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
   },
@@ -165,10 +176,10 @@
     "topics": ["Express.js", "Web Development"]
   },
   {
-    "message": "Differentiate between res.send() and res.json()",
+    "message": "When would you use application-level middleware?",
     "correct_answer_index": 0,
     "choices": [
-      "res.send() can send any type of response, while res.json() sends a JSON response."
+      "When you want to run a piece of code for every request that comes in."
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
