@@ -1,21 +1,23 @@
 [
   {
     "message": "Which is NOT a key feature of Node.js?",
-    "correct_answer_index": 2,
+    "correct_answer_index": 1,
     "choices": [
       "Asynchronous event driven IO helps concurrent request handling",
-      "Single threaded but highly scalable",
       "Multi-threaded and highly scalable",
-      "The Node.js runtime uses JavaScript"
+      "Almost no function in Node.js is performed directly",
+      "Node.js rarely blocks I/O operations"
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
     "message": "What is the Event Loop?",
-    "correct_answer_index": 0,
+    "correct_answer_index": 2,
     "choices": [
-      "The event loop allows Node.js to perform non-blocking I/O operations despite JavaScript being single-threaded by offloading operations to the kernel when possible."
+      "The Event Loop is any loop that handles multiple Promise objects.",
+      "The Event Loop is the mechanism of which Promise objects change state (fulfilled, rejected, and pending).",
+      "The Event Loop helps perform non-blocking I/O operations despite JavaScript being single-threaded by offloading operations to the kernel."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -24,7 +26,9 @@
     "message": "What is an Event Emitter?",
     "correct_answer_index": 1,
     "choices": [
-      "Event Emitter is an object that allows you to create and handle custom events."
+      "",
+      "Event Emitter is an object that allows you to create and handle custom events.",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -33,15 +37,19 @@
     "message": "What is the purpose of the Buffer class?",
     "correct_answer_index": 0,
     "choices": [
-      "Used to reference and operate on a fixed-length sequence of bytes."
+      "Used to reference and operate on a fixed-length sequence of bytes.",
+      "",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
   },
   {
     "message": "What is piping?",
-    "correct_answer_index": 0,
+    "correct_answer_index": 2,
     "choices": [
+      "",
+      "",
       "Piping is a mechanism that provides the output of one stream as the input to another stream."
     ],
     "difficulty": "moderate",
@@ -49,9 +57,11 @@
   },
   {
     "message": "NODE_ENV is used for?",
-    "correct_answer_index": 0,
+    "correct_answer_index": 2,
     "choices": [
-      "NODE_ENV is an environment variable which is used to specify the environment in which a Node app is executed."
+      "",
+      "",
+      "NODE_ENV is used to specify the environment in which a Node app is executed."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -60,7 +70,9 @@
     "message": "The V8 engine...",
     "correct_answer_index": 0,
     "choices": [
-      "Is a JS engine written in C++. V8 compiles JavaScript code into machine code at execution by implementing a JIT (Just-In-Time) compiler."
+      "Is a JS engine written in C++. V8 compiles JavaScript code into machine code at execution by implementing a JIT (Just-In-Time) compiler.",
+      "",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -69,7 +81,7 @@
     "message": "What is npm?",
     "correct_answer_index": 0,
     "choices": [
-      "npm is the package manager for JavaScript and the world's largest software registry. Discover packages of reusable code — and assemble them in powerful new ways.",
+      "npm is a software registry and package manager.",
       "npm is a tool for automating web browsers.",
       "npm is a JavaScript-based open-source front-end web application framework mainly maintained by Facebook and a community of individual developers and companies.",
       "npm is a JavaScript runtime built on Chrome's V8 JavaScript engine."
@@ -79,27 +91,33 @@
   },
   {
     "message": "What's the difference between dependencies, devDependencies and peerDependencies?",
-    "correct_answer_index": 0,
+    "correct_answer_index": 1,
     "choices": [
-      "Dependencies are packages required for a production build, devDependencies are required for development and testing, peerDependencies denote that a plugin is intended to work with specific package versions."
+      "",
+      "Dependencies are packages required for a production build, devDependencies are required for development and testing, peerDependencies denote that a plugin is intended to work with specific package versions.",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
   },
   {
     "message": "What is the difference between a package.json file and a package-lock.json file?",
-    "correct_answer_index": 0,
+    "correct_answer_index": 1,
     "choices": [
-      "package-lock.json is automatically generated for any operations where npm modifies the node_modules tree or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees."
+      "",
+      "package-lock.json is automatically generated for any operations where npm modifies the node_modules tree or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees.",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
   },
   {
     "message": "When would you use the npm ci command?",
-    "correct_answer_index": 0,
+    "correct_answer_index": 1,
     "choices": [
-      "It is used to clean install dependencies. ci attempts to install node_modules from scratch, following the package-lock or shrinkwrap files without modifying them."
+      "",
+      "It is used to clean install dependencies. ci attempts to install node_modules from scratch, following the package-lock or shrinkwrap files without modifying them.",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -112,11 +130,12 @@
     "topics": ["Packages"]
   },
   {
-    "message": "What is global installation of dependencies",
+    "message": "What is global installation of dependencies?",
     "correct_answer_index": 1,
     "choices": [
-      "Global installation of dependencies is when you install a package globally so that all the projects can use it.",
-      "Global installation of dependencies is when you install a package globally so that you can run it as a command line tool."
+      "Global installation is when you install dependencies at the root of a project.",
+      "Global installation is when you install dependencies on the system for access irrespective of project.",
+      "Global installation is when you perform a fresh install of all dependencies."
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -125,7 +144,9 @@
     "message": "The purpose of npm audit is to...",
     "correct_answer_index": 1,
     "choices": [
-      "request a report of known vulnerabilities within dependencies. If vulnerabilities are found, the impact and appropriate remediation is calculated. If the fix argument is provided, remediation will be applied to the dependencies."
+      "",
+      "request a report of known vulnerabilities within dependencies. If vulnerabilities are found, the impact and appropriate remediation is calculated. If the fix argument is provided, remediation will be applied to the dependencies.",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -134,7 +155,9 @@
     "message": "Why should you separate Express 'app' and 'server'?",
     "correct_answer_index": 0,
     "choices": [
-      "Separation of concerns. You can test 'app' logic without actually listening on a port."
+      "Separation of concerns. You can test 'app' logic without actually listening on a port.",
+      "",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
@@ -143,7 +166,9 @@
     "message": "What is middleware in Express.js?",
     "correct_answer_index": 0,
     "choices": [
-      "Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle."
+      "Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle.",
+      "",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
@@ -152,25 +177,31 @@
     "message": "What is the purpose of the next() function in Express.js?",
     "correct_answer_index": 0,
     "choices": [
-      "Invokes the next middleware function in the app. If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function."
+      "Invokes the next middleware function in the app. If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function.",
+      "",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
   },
   {
     "message": "When would you use app.use()?",
-    "correct_answer_index": 0,
+    "correct_answer_index": 1,
     "choices": [
-      "app.use() is used to mount the specified middleware function(s) at the path which is being specified."
+      "",
+      "app.use() is used to mount the specified middleware function(s) at the path which is being specified.",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
   },
   {
     "message": "What is Express.js?",
-    "correct_answer_index": 0,
+    "correct_answer_index": 1,
     "choices": [
-      "A web framework that simplifies Node's web server APIs and makes it easier to organize with middleware and routing."
+      "",
+      "A web framework that simplifies Node's web server APIs and makes it easier to organize with middleware and routing.",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
@@ -179,18 +210,20 @@
     "message": "When would you use application-level middleware?",
     "correct_answer_index": 0,
     "choices": [
-      "When you want to run a piece of code for every request that comes in."
+      "When you want to run a piece of code for every request that comes in.",
+      "",
+      ""
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
   },
   {
     "message": "What is scaffolding in Express.js?",
-    "correct_answer_index": 0,
+    "correct_answer_index": 2,
     "choices": [
-      "Scaffolding is the automatic generation of a basic directory structure for a new application.",
       "Scaffolding is a technique where routes are laid out like a labyrinth. Users have to navigate through the maze to reach different endpoints.",
-      "Scaffolding is the automatic installation of popular middleware for a new application."
+      "Scaffolding is the automatic installation of popular middleware for a new application.",
+      "Scaffolding is the automatic generation of a basic directory structure for a new application."
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
