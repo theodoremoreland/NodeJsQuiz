@@ -1,14 +1,12 @@
 [
   {
     "message": "Which is NOT a key feature of Node.js?",
-    "correct_answer_index": 3,
+    "correct_answer_index": 2,
     "choices": [
       "Asynchronous event driven IO helps concurrent request handling",
-      "Fast in code execution",
       "Single threaded but highly scalable",
-      "Multi-threaded but highly scalable",
-      "Node.js library uses JavaScript",
-      "No Buffering"
+      "Multi-threaded and highly scalable",
+      "The Node.js runtime uses JavaScript"
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -17,10 +15,7 @@
     "message": "What is the Event Loop?",
     "correct_answer_index": 0,
     "choices": [
-      "Event Loop is a single thread that performs all the operations asynchronously.",
-      "Event Loop is a single thread that performs all the operations synchronously.",
-      "Event Loop is a multi-thread that performs all the operations asynchronously.",
-      "Event Loop is a multi-thread that performs all the operations synchronously."
+      "The event loop allows Node.js to perform non-blocking I/O operations despite JavaScript being single-threaded by offloading operations to the kernel when possible."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -29,10 +24,7 @@
     "message": "What is an Event Emitter?",
     "correct_answer_index": 1,
     "choices": [
-      "Event Emitter is a single thread that performs all the operations asynchronously.",
-      "Event Emitter is a single thread that performs all the operations synchronously.",
-      "Event Emitter is a multi-thread that performs all the operations asynchronously.",
-      "Event Emitter is a multi-thread that performs all the operations synchronously."
+      "Event Emitter is an object that allows you to create and handle custom events."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -41,10 +33,7 @@
     "message": "What is the purpose of the Buffer class?",
     "correct_answer_index": 0,
     "choices": [
-      "Buffer class is used to handle binary data.",
-      "Buffer class is used to handle string data.",
-      "Buffer class is used to handle number data.",
-      "Buffer class is used to handle boolean data."
+      "Used to reference and operate on a fixed-length sequence of bytes."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -53,10 +42,7 @@
     "message": "What is piping?",
     "correct_answer_index": 0,
     "choices": [
-      "Piping is a mechanism where we provide the output of one stream as the input to another stream.",
-      "Piping is a mechanism where we provide the output of one stream as the input to another stream.",
-      "Piping is a mechanism where we provide the output of one stream as the input to another stream.",
-      "Piping is a mechanism where we provide the output of one stream as the input to another stream."
+      "Piping is a mechanism that provides the output of one stream as the input to another stream."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -65,9 +51,6 @@
     "message": "NODE_ENV is used for?",
     "correct_answer_index": 0,
     "choices": [
-      "NODE_ENV is an environment variable which is used to specify the environment in which a Node app is executed.",
-      "NODE_ENV is an environment variable which is used to specify the environment in which a Node app is executed.",
-      "NODE_ENV is an environment variable which is used to specify the environment in which a Node app is executed.",
       "NODE_ENV is an environment variable which is used to specify the environment in which a Node app is executed."
     ],
     "difficulty": "moderate",
@@ -77,16 +60,7 @@
     "message": "The V8 engine...",
     "correct_answer_index": 0,
     "choices": [
-      "Is an open source JS engine written in C++. V8 translates JavaScript code into machine code instead of using an interpreter. It compiles JavaScript code into machine code at execution by implementing a JIT (Just-In-Time) compiler."
-    ],
-    "difficulty": "moderate",
-    "topics": ["Standard"]
-  },
-  {
-    "message": "How does Node.js handle concurrency?",
-    "correct_answer_index": 0,
-    "choices": [
-      "Node.js is a single-threaded application, but it can support concurrency via the concept of event and callbacks. Every API of Node.js is asynchronous and being single-threaded, they use async function calls to maintain concurrency. Node.js uses observer pattern. Node.js thread keeps an event loop and whenever a task gets completed, it fires the corresponding event which signals the event-listener function to execute."
+      "Is a JS engine written in C++. V8 compiles JavaScript code into machine code at execution by implementing a JIT (Just-In-Time) compiler."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -107,10 +81,7 @@
     "message": "What's the difference between dependencies, devDependencies and peerDependencies?",
     "correct_answer_index": 0,
     "choices": [
-      "Dependencies are the packages that are required for your project in production.",
-      "Dependencies are the packages that are required for your project in production.",
-      "Dependencies are the packages that are required for your project in production.",
-      "Dependencies are the packages that are required for your project in production."
+      "Dependencies are packages required for a production build, devDependencies are required for development and testing, peerDependencies denote that a plugin is intended to work with specific package versions."
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -119,10 +90,7 @@
     "message": "What is the difference between a package.json file and a package-lock.json file?",
     "correct_answer_index": 0,
     "choices": [
-      "package-lock.json is automatically generated for any operations where npm modifies either the node_modules tree, or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees, regardless of intermediate dependency updates.",
-      "package-lock.json is automatically generated for any operations where npm modifies either the node_modules tree, or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees, regardless of intermediate dependency updates.",
-      "package-lock.json is automatically generated for any operations where npm modifies either the node_modules tree, or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees, regardless of intermediate dependency updates.",
-      "package-lock.json is automatically generated for any operations where npm modifies either the node_modules tree, or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees, regardless of intermediate dependency updates."
+      "package-lock.json is automatically generated for any operations where npm modifies the node_modules tree or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees."
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -131,10 +99,7 @@
     "message": "When would you use the npm ci command?",
     "correct_answer_index": 0,
     "choices": [
-      "npm ci is a command that helps you run npm install faster and more reliably in continuous integration environments.",
-      "npm ci is a command that helps you run npm install faster and more reliably in continuous integration environments.",
-      "npm ci is a command that helps you run npm install faster and more reliably in continuous integration environments.",
-      "npm ci is a command that helps you run npm install faster and more reliably in continuous integration environments."
+      "It is used to clean install dependencies, which attempts to install node_modules from scratch, following the package-lock or shrinkwrap files without modifying them."
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -151,9 +116,7 @@
     "correct_answer_index": 1,
     "choices": [
       "Global installation of dependencies is when you install a package globally so that all the projects can use it.",
-      "Global installation of dependencies is when you install a package globally so that you can run it as a command line tool.",
-      "Global installation of dependencies is when you install a package globally so that you can use it in your code.",
-      "Global installation of dependencies is when you install a package globally so that you can use it in your code."
+      "Global installation of dependencies is when you install a package globally so that you can run it as a command line tool."
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -162,9 +125,6 @@
     "message": "Why should you separate Express 'app' and 'server'?",
     "correct_answer_index": 0,
     "choices": [
-      "Separation of concerns. You can test 'app' logic without actually listening on a port.",
-      "Separation of concerns. You can test 'app' logic without actually listening on a port.",
-      "Separation of concerns. You can test 'app' logic without actually listening on a port.",
       "Separation of concerns. You can test 'app' logic without actually listening on a port."
     ],
     "difficulty": "moderate",
@@ -199,7 +159,7 @@
     "message": "What is Express.js?",
     "correct_answer_index": 0,
     "choices": [
-      "A web framework that simplifies Node's web server APIs and makes it easier to organize with middleware and routing"
+      "A web framework that simplifies Node's web server APIs and makes it easier to organize with middleware and routing."
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
@@ -217,7 +177,9 @@
     "message": "What is scaffolding in Express.js?",
     "correct_answer_index": 0,
     "choices": [
-      "Scaffolding is the automatic generation of a basic directory structure for a new application."
+      "Scaffolding is the automatic generation of a basic directory structure for a new application.",
+      "Scaffolding is a technique where routes are laid out like a labyrinth. Users have to navigate through the maze to reach different endpoints.",
+      "Scaffolding is the automatic installation of popular middleware for a new application."
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
