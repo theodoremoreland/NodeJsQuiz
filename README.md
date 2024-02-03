@@ -1,6 +1,6 @@
 # Node.js Quiz
 
-A Node.js quiz written in Node.js for the command line. Choose by difficulty and topic(s).
+A Node.js quiz written in Node.js for the command line.
 
 <img src="presentation/thumbnail.png" width="800">
 
