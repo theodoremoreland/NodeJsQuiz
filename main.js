@@ -3,6 +3,7 @@ import fs from "fs";
 
 // Third party
 import inquirer from "inquirer";
+import figlet from "figlet";
 
 // Custom
 import { green, red, blink } from "./modules/colors.js";
@@ -166,6 +167,7 @@ const main = async () => {
 
   while (takeQuiz) {
     console.clear();
+    console.log(figlet.textSync("Node.js Quiz"));
 
     const topics = await promptUserForTopics();
     const difficulty = await promptUserForDifficulty();
