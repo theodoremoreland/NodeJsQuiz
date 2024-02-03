@@ -3,10 +3,10 @@
     "message": "Which is NOT a key feature of Node.js?",
     "correct_answer_index": 1,
     "choices": [
-      "Asynchronous event driven IO helps concurrent request handling",
-      "Multi-threaded and highly scalable",
-      "Almost no function in Node.js is performed directly",
-      "Node.js rarely blocks I/O operations"
+      "Asynchronous event driven IO helps concurrent request handling.",
+      "Multi-threaded and highly scalable.",
+      "Almost no function in Node.js is performed directly.",
+      "Node.js rarely blocks I/O operations."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -26,9 +26,9 @@
     "message": "What is an Event Emitter?",
     "correct_answer_index": 1,
     "choices": [
-      "",
+      "Event Emitter is a function that emits events.",
       "Event Emitter is an object that allows you to create and handle custom events.",
-      ""
+      "Event Emitter is a function that listens for events."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -38,8 +38,8 @@
     "correct_answer_index": 0,
     "choices": [
       "Used to reference and operate on a fixed-length sequence of bytes.",
-      "",
-      ""
+      "Used to reference and operate on a fixed-length sequence of characters.",
+      "Used to reference and operate on a fixed-length sequence of numbers."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -48,8 +48,8 @@
     "message": "What is piping?",
     "correct_answer_index": 2,
     "choices": [
-      "",
-      "",
+      "Piping is a system that allows you to pipe water into your computer for cooling.",
+      "Piping s a pattern of method chaining Promise objects.",
       "Piping is a mechanism that provides the output of one stream as the input to another stream."
     ],
     "difficulty": "moderate",
@@ -59,9 +59,9 @@
     "message": "NODE_ENV is used for?",
     "correct_answer_index": 2,
     "choices": [
-      "",
-      "",
-      "NODE_ENV is used to specify the environment in which a Node app is executed."
+      "NODE_ENV is used to define various environment variables.",
+      "NODE_ENV is used to specify the version of Node.js being used.",
+      "NODE_ENV is used to specify whether to Node app is being executed in production or development etc."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -71,8 +71,8 @@
     "correct_answer_index": 0,
     "choices": [
       "Is a JS engine written in C++. V8 compiles JavaScript code into machine code at execution by implementing a JIT (Just-In-Time) compiler.",
-      "",
-      ""
+      "Is a multi-platform video game engine written in JavaScript.",
+      "Is a JavaScript framework for back-end services capable of utilizing up to 8 cores."
     ],
     "difficulty": "moderate",
     "topics": ["Standard"]
@@ -93,9 +93,9 @@
     "message": "What's the difference between dependencies, devDependencies and peerDependencies?",
     "correct_answer_index": 1,
     "choices": [
-      "",
+      "Dependencies are packages that only apply in production environments, devDependencies are packages that only apply in development environments, and peerDependencies are packages that are required for the user's operating system.",
       "Dependencies are packages required for a production build, devDependencies are required for development and testing, peerDependencies denote that a plugin is intended to work with specific package versions.",
-      ""
+      "Dependencies are packages that are required for the user's operating system, devDependencies are packages that are required for a production build, and peerDependencies are packages that only apply in development environments."
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -104,9 +104,8 @@
     "message": "What is the difference between a package.json file and a package-lock.json file?",
     "correct_answer_index": 1,
     "choices": [
-      "",
-      "package-lock.json is automatically generated for any operations where npm modifies the node_modules tree or package.json. It describes the exact tree that was generated, such that subsequent installs are able to generate identical trees.",
-      ""
+      "package.json is automatically generated for any operations where npm modifies the node_modules or package-lock.json. It describes the exact tree that was generated (for subsequent installs).",
+      "package-lock.json is automatically generated for any operations where npm modifies the node_modules or package.json. It describes the exact tree that was generated (for subsequent installs)."
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -115,9 +114,9 @@
     "message": "When would you use the npm ci command?",
     "correct_answer_index": 1,
     "choices": [
-      "",
-      "It is used to clean install dependencies. ci attempts to install node_modules from scratch, following the package-lock or shrinkwrap files without modifying them.",
-      ""
+      "You would use npm ci to install a package globally.",
+      "npm ci attempts to install node_modules from scratch, following the package-lock or shrinkwrap files without modifying them.",
+      "You would use npm ci to quickly delete the node_modules folder."
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -144,9 +143,9 @@
     "message": "The purpose of npm audit is to...",
     "correct_answer_index": 1,
     "choices": [
-      "",
+      "verify that all dependencies are the newest available versions.",
       "request a report of known vulnerabilities within dependencies. If vulnerabilities are found, the impact and appropriate remediation is calculated. If the fix argument is provided, remediation will be applied to the dependencies.",
-      ""
+      "verify the integrity of the npm cache."
     ],
     "difficulty": "moderate",
     "topics": ["Packages"]
@@ -156,8 +155,8 @@
     "correct_answer_index": 0,
     "choices": [
       "Separation of concerns. You can test 'app' logic without actually listening on a port.",
-      "",
-      ""
+      "To avoid race conditions.",
+      "It makes for more readable code."
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
@@ -166,9 +165,9 @@
     "message": "What is middleware in Express.js?",
     "correct_answer_index": 0,
     "choices": [
-      "Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle.",
-      "",
-      ""
+      "Middleware are functions that have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle.",
+      "Middleware are API endpoints (i.e. they are in the middle of two softwares).",
+      "Middleware are functions that are used to define routes in Express.js."
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
@@ -178,8 +177,8 @@
     "correct_answer_index": 0,
     "choices": [
       "Invokes the next middleware function in the app. If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function.",
-      "",
-      ""
+      "To skip the current iteration of the Event Loop.",
+      "To prompt the server to listen for incoming requests."
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
@@ -188,9 +187,9 @@
     "message": "When would you use app.use()?",
     "correct_answer_index": 1,
     "choices": [
-      "",
-      "app.use() is used to mount the specified middleware function(s) at the path which is being specified.",
-      ""
+      "When mounting the specified middleware function(s) at the path which is being specified.",
+      "When starting the server.",
+      "When specifying the server version."
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
@@ -199,9 +198,9 @@
     "message": "What is Express.js?",
     "correct_answer_index": 1,
     "choices": [
-      "",
+      "A web framework designed to improve performance of network applications.",
       "A web framework that simplifies Node's web server APIs and makes it easier to organize with middleware and routing.",
-      ""
+      "A web framework based on quantum.html that allows for faster rendering of web pages."
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
@@ -211,8 +210,8 @@
     "correct_answer_index": 0,
     "choices": [
       "When you want to run a piece of code for every request that comes in.",
-      "",
-      ""
+      "when you want to bolster security for the entire application.",
+      "When you want to run a piece of code for a specific route."
     ],
     "difficulty": "moderate",
     "topics": ["Express.js", "Web Development"]
