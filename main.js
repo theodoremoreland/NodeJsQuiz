@@ -83,6 +83,8 @@ export const prepDataForInquirer = (data) => {
  * @returns {Promise<String>} answer
  */
 const promptUserForTopics = async () => {
+  // TODO - Make it such that topics are not hard-coded.
+  // TODO - Make it such that counts of questions for each topic are displayed.
   const data = [
     {
       type: "checkbox",
@@ -103,6 +105,8 @@ const promptUserForTopics = async () => {
  * @returns {Promise<String>} answer
  */
 const promptUserForDifficulty = async () => {
+  // TODO - Make it such that difficulty is not hard-coded.
+  // TODO - Make it such that counts of questions for each difficulty are displayed.
   const data = [
     {
       type: "list",
@@ -169,6 +173,7 @@ const main = async () => {
     console.clear();
     console.log(figlet.textSync("Node.js Quiz"));
 
+    // TODO - Make it such that data is filtered based on first prompt prior to second prompt.
     const topics = await promptUserForTopics();
     const difficulty = await promptUserForDifficulty();
     const filteredData = filterData(data, difficulty, topics);
