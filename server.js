@@ -8,14 +8,14 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
-wss.on("error", console.error);
+wss.on("connection", function connection(ws) {
+  ws.on("error", console.error);
 
-wss.on("open", function open() {
-  wss.send("something");
-});
+  ws.on("message", function incoming(message) {
+    console.log("received: %s", message);
+  });
 
-wss.on("message", function message(data) {
-  console.log("received: %s", data);
+  ws.send("something");
 });
 
 app.get("/", (req, res) => {
