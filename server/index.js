@@ -39,8 +39,6 @@ wss.on("connection", (ws) => {
 
     ls.stdin.write(message);
   });
-
-  ws.send("something");
 });
 
 app.get("/", (req, res) => {

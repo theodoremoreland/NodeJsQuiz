@@ -7,6 +7,34 @@ window.onload = () => {
 
   startButton.addEventListener("click", () => {
     // Create a new WebSocket.
+
+    if (webSocket) {
+      startButton.textContent = "Start";
+      startButton.style.backgroundColor = "green";
+
+      webSocket.close();
+    } else {
+      startButton.textContent = "Stop";
+      startButton.style.backgroundColor = "red";
+
+      webSocket = new WebSocket("ws://localhost:3000");
+
+      webSocket.onopen = () => {
+        console.log("WebSocket connection opened.");
+      };
+
+      webSocket.onmessage = (event) => {
+        textArea.value += event.data;
+      };
+
+      webSocket.onclose = () => {
+        console.log("WebSocket connection closed.");
+      };
+
+      webSocket.onerror = (error) => {
+        console.error(error);
+      };
+    }
   });
 
   textArea.addEventListener("focus", (event) => {
