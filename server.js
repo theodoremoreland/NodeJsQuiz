@@ -20,6 +20,8 @@ wss.on("connection", (ws) => {
 
   ls.stdout.on("data", (data) => {
     console.log(`stdout: ${data}`);
+
+    ws.send(data.toString());
   });
 
   ls.stderr.on("data", (data) => {
@@ -42,19 +44,7 @@ wss.on("connection", (ws) => {
 });
 
 app.get("/", (req, res) => {
-  const ls = spawn("node", ["main.js"]);
-
-  ls.stdout.on("data", (data) => {
-    console.log(`stdout: ${data}`);
-  });
-
-  ls.stderr.on("data", (data) => {
-    console.error(`stderr: ${data}`);
-  });
-
-  ls.on("close", (code) => {
-    console.log(`child process exited with code ${code}`);
-  });
+  res.send("Hello World");
 });
 
 server.on("request", app);
