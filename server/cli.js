@@ -180,6 +180,7 @@ const main = async () => {
     console.clear();
     console.log(figlet.textSync("Node.js Quiz"));
 
+    // List question types should be avoided when piping data to the child process for now
     if (!isPiped) {
       // TODO - Make it such that data is filtered based on first prompt prior to second prompt.
       topics = await promptUserForTopics();

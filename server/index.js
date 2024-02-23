@@ -27,7 +27,7 @@ const enter = "\\r";
 app.use(express.static(path.join(__dirname, "public")));
 
 wss.on("connection", (ws) => {
-  const process = spawn("node", [path.join(__dirname, "main.js"), "-piped"]);
+  const process = spawn("node", [path.join(__dirname, "cli.js"), "-piped"]);
 
   process.stdout.on("data", (data) => {
     console.log(`stdout: ${data}`);
@@ -48,7 +48,7 @@ wss.on("connection", (ws) => {
   ws.on("message", (message) => {
     console.log("received: %s", message);
 
-    process.stdin.write(message);
+    process.stdin.write(`{message}`);
   });
 
   ws.on("close", () => {
