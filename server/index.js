@@ -13,7 +13,6 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
-const clients = [];
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -24,12 +23,14 @@ const left = "\\033[D";
 const right = "\\033[C";
 const enter = "\\r";
 
+let clientId = 0;
+
 // Middleware
 app.use(express.static(path.join(__dirname, "public")));
 
 wss.on("connection", (ws) => {
-  clients.push(ws);
-  console.log(`Client $${clients.length} connected via WebSocket.`);
+  const aClientId = ++clientId;
+  console.log(`Client #${aClientId} connected via WebSocket.`);
 
   const process = spawn("node", [path.join(__dirname, "cli.js"), "-piped"]);
 
@@ -58,7 +59,7 @@ wss.on("connection", (ws) => {
   });
 
   ws.on("close", () => {
-    console.log("Client disconnected from WebSocket.");
+    console.log(`Client #${aClientId} disconnected from WebSocket.`);
 
     process.kill();
   });
