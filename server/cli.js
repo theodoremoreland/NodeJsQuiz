@@ -8,6 +8,9 @@ import figlet from "figlet";
 // Custom
 import { green, red, blink } from "./modules/colors.js";
 
+const args = process.argv.slice(2);
+const isPiped = args.includes("-piped");
+
 /**
  * Gets data from data.json
  * @returns {Array} data
@@ -71,8 +74,9 @@ export const randomizeData = (data) => {
  * @returns {Array} dataTransformed
  */
 export const prepDataForInquirer = (data) => {
+  const type = isPiped ? "rawlist" : "list";
   const dataTransformed = data.map((item, index) => {
-    return { ...item, name: String(index), type: "list" };
+    return { ...item, name: String(index), type };
   });
 
   return dataTransformed;
@@ -168,16 +172,23 @@ const logResult = (report) => {
 const main = async () => {
   const data = getData();
   let takeQuiz = true;
+  let topics;
+  let difficulty;
+  let filteredData;
 
   while (takeQuiz) {
     console.clear();
     console.log(figlet.textSync("Node.js Quiz"));
 
-    // TODO - Make it such that data is filtered based on first prompt prior to second prompt.
-    const topics = await promptUserForTopics();
-    const difficulty = await promptUserForDifficulty();
-    const filteredData = filterData(data, difficulty, topics);
-    const dataRandomized = randomizeData(filteredData);
+    // List question types should be avoided when piping data to the child process for now
+    if (!isPiped) {
+      // TODO - Make it such that data is filtered based on first prompt prior to second prompt.
+      topics = await promptUserForTopics();
+      difficulty = await promptUserForDifficulty();
+      filteredData = filterData(data, difficulty, topics);
+    }
+
+    const dataRandomized = randomizeData(filteredData || data);
     const preppedData = prepDataForInquirer(dataRandomized);
     const answers = await inquirer.prompt(preppedData);
     const report = generateReport(answers, preppedData);
