@@ -66,6 +66,10 @@ textArea.addEventListener("focus", () => {
   textArea.selectionStart = textArea.value.length;
 });
 
+textArea.addEventListener("click", () => {
+  textArea.selectionStart = textArea.value.length;
+});
+
 textArea.addEventListener("keydown", (event) => {
   const currentText = event.target.value;
 
