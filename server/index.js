@@ -8,6 +8,7 @@ import { spawn } from "child_process";
 import express from "express";
 import { WebSocketServer } from "ws";
 
+// Server initialization
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
@@ -26,7 +27,7 @@ const enter = "\\r";
 app.use(express.static(path.join(__dirname, "public")));
 
 wss.on("connection", (ws) => {
-  const process = spawn("node", [path.join(__dirname, "main.js")]);
+  const process = spawn("node", [path.join(__dirname, "main.js"), "-piped"]);
 
   process.stdout.on("data", (data) => {
     console.log(`stdout: ${data}`);
@@ -55,7 +56,7 @@ wss.on("connection", (ws) => {
   });
 });
 
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
   res.sendFile("index.html");
 });
 
