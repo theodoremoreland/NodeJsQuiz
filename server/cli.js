@@ -11,11 +11,6 @@ import { green, red, blink } from "./modules/colors.js";
 const args = process.argv.slice(2);
 const isPiped = args.includes("-piped");
 
-// Effects for stdout. These are only applied when the process is not piped.
-green = isPiped ? (str) => str : green;
-red = isPiped ? (str) => str : red;
-blink = isPiped ? (str) => str : blink;
-
 /**
  * Gets data from data.json
  * @returns {Array} data

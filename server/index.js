@@ -15,6 +15,7 @@ const wss = new WebSocketServer({ server });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const escapeSequenceRegex = /\x1b\[[0-9;]*[a-zA-Z]/gm;
 
 // Valid commands
 const up = "\\033[A";
@@ -35,9 +36,15 @@ wss.on("connection", (ws) => {
   const process = spawn("node", [path.join(__dirname, "cli.js"), "-piped"]);
 
   process.stdout.on("data", (data) => {
-    console.log(`Child process ${process.pid} stdout:\n${data}`);
+    const dataString = data.toString();
+    console.log(`Child process ${process.pid} stdout:\n${dataString}`);
 
-    ws.send(data.toString());
+    if (dataString[0] === "\x1b") {
+      // Skip sending data as the entire line is presumed to be an escape sequence.
+      return;
+    }
+
+    ws.send(dataString.replace(escapeSequenceRegex, ""));
   });
 
   process.stderr.on("data", (data) => {
