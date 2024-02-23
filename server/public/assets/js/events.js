@@ -13,11 +13,17 @@ let webSocket;
 textArea.value = commandPrompt;
 
 const isValidAnswer = (answer) => {
-  if (isNaN(answer)) {
-    return false;
+  let isValid = false;
+
+  if (answer.toLowerCase() === "y" || answer.toLowerCase() === "n") {
+    isValid = true;
+  } else if (isNaN(answer)) {
+    isValid = false;
+  } else {
+    isValid = true;
   }
 
-  return true;
+  return isValid;
 };
 
 const startQuiz = () => {
@@ -114,7 +120,7 @@ textArea.addEventListener("keyup", (event) => {
 
   if (event.key === "Enter") {
     // Send the message to the server.
-    const answer = answerRegex.exec(currentText)[1]; // Capture group at index 1
+    const answer = answerRegex.exec(currentText)[1]?.trim(); // Capture group at index 1
 
     if (answer && isValidAnswer(answer)) {
       webSocket.send(`${answer}`);
