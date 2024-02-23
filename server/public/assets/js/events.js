@@ -46,6 +46,7 @@ const startQuiz = () => {
       clearInterval(loadingIntervalId);
 
       textArea.value = textArea.value.replace(ellipsisRegex, "start");
+      textArea.focus();
     };
 
     webSocket.onclose = () => {
