@@ -5,6 +5,8 @@ const linePrefixLength = linePrefix.length;
 const answerPrefixLength = answerPrefix.length;
 const startButton = document.querySelector("button");
 const textArea = document.querySelector("textarea");
+const ellipsisRegex = new RegExp("start[.]{1,3}$", "gm");
+let loadingIntervalId;
 let webSocket;
 
 textArea.value = commandPrompt;
@@ -20,6 +22,18 @@ const startQuiz = () => {
     startButton.style.backgroundColor = "red";
     textArea.value += "start";
 
+    loadingIntervalId = setInterval(() => {
+      const lastThreeChars = textArea.value.slice(-3);
+
+      switch (lastThreeChars) {
+        case "...":
+          textArea.value = textArea.value.slice(0, -3) + ".";
+          break;
+        default:
+          textArea.value += ".";
+      }
+    }, 300);
+
     webSocket = new WebSocket("ws://localhost:3000");
 
     webSocket.onopen = () => {
@@ -28,6 +42,10 @@ const startQuiz = () => {
 
     webSocket.onmessage = (event) => {
       textArea.value += "\n" + event.data;
+
+      clearInterval(loadingIntervalId);
+
+      textArea.value = textArea.value.replace(ellipsisRegex, "start");
     };
 
     webSocket.onclose = () => {
@@ -36,6 +54,8 @@ const startQuiz = () => {
 
     webSocket.onerror = (error) => {
       console.error(error);
+
+      clearInterval(loadingIntervalId);
     };
   }
 };
