@@ -28,11 +28,11 @@ header {
 }
 
 button {
-  padding: 0.5rem 1rem;
+  padding: 0.55rem 1.5rem;
   background-color: green;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 button:hover {

@@ -1,4 +1,4 @@
-const linePrefix = "$ ";
+const linePrefix = "> ";
 const commandPrompt = `Node.js Quiz\n${linePrefix}`;
 const answerPrefix = "Answer: ";
 const linePrefixLength = linePrefix.length;
@@ -18,6 +18,7 @@ const startQuiz = () => {
   } else {
     startButton.textContent = "Stop";
     startButton.style.backgroundColor = "red";
+    textArea.value += "start";
 
     webSocket = new WebSocket("ws://localhost:3000");
 
@@ -39,7 +40,7 @@ const startQuiz = () => {
   }
 };
 
-startButton.addEventListener("click", () => startQuiz);
+startButton.addEventListener("click", startQuiz);
 
 textArea.addEventListener("focus", () => {
   textArea.selectionStart = textArea.value.length;
