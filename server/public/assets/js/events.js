@@ -6,10 +6,19 @@ const answerPrefixLength = answerPrefix.length;
 const startButton = document.querySelector("button");
 const textArea = document.querySelector("textarea");
 const ellipsisRegex = new RegExp("start[.]{1,3}$", "gm");
+const answerRegex = new RegExp(`${answerPrefix}(.*)$`, "gm");
 let loadingIntervalId;
 let webSocket;
 
 textArea.value = commandPrompt;
+
+const isValidAnswer = (answer) => {
+  if (isNaN(answer)) {
+    return false;
+  }
+
+  return true;
+};
 
 const startQuiz = () => {
   if (webSocket) {
@@ -105,7 +114,12 @@ textArea.addEventListener("keyup", (event) => {
 
   if (event.key === "Enter") {
     // Send the message to the server.
+    const answer = answerRegex.exec(currentText)[1]; // Capture group at index 1
 
-    textArea.value = currentText + "\n\n" + commandPrompt;
+    if (answer && isValidAnswer(answer)) {
+      webSocket.send(`${answer}`);
+    } else {
+      textArea.value = currentText + "\n\n" + commandPrompt;
+    }
   }
 });

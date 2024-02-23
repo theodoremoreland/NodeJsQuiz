@@ -21,7 +21,7 @@ const up = "\\033[A";
 const down = "\\033[B";
 const left = "\\033[D";
 const right = "\\033[C";
-const enter = "\\r";
+const enter = "\r";
 
 let clientId = 0;
 
@@ -55,7 +55,7 @@ wss.on("connection", (ws) => {
       `Received following message from client:\n----------\n${message}\n----------\n`
     );
 
-    process.stdin.write(`{message}`);
+    process.stdin.write(`${message}${enter}`);
   });
 
   ws.on("close", () => {
