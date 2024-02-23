@@ -13,6 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
+const clients = [];
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -27,31 +28,38 @@ const enter = "\\r";
 app.use(express.static(path.join(__dirname, "public")));
 
 wss.on("connection", (ws) => {
+  clients.push(ws);
+  console.log(`Client $${clients.length} connected via WebSocket.`);
+
   const process = spawn("node", [path.join(__dirname, "cli.js"), "-piped"]);
 
   process.stdout.on("data", (data) => {
-    console.log(`stdout: ${data}`);
+    console.log(`Child process ${process.pid} stdout:\n${data}`);
 
     ws.send(data.toString());
   });
 
   process.stderr.on("data", (data) => {
-    console.error(`stderr: ${data}`);
+    console.error(`Child process ${process.pid} stderr:\n${data}`);
   });
 
   process.on("close", (code) => {
-    console.log(`child process exited with code ${code}`);
+    console.log(`Child process ${process.pid} exited with code ${code}`);
   });
 
   ws.on("error", console.error);
 
   ws.on("message", (message) => {
-    console.log("received: %s", message);
+    console.log(
+      `Received following message from client:\n----------\n${message}\n----------\n`
+    );
 
     process.stdin.write(`{message}`);
   });
 
   ws.on("close", () => {
+    console.log("Client disconnected from WebSocket.");
+
     process.kill();
   });
 });
