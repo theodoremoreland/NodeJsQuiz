@@ -18,10 +18,6 @@ const __dirname = path.dirname(__filename);
 const escapeSequenceRegex = /\x1b\[[0-9;]*[a-zA-Z]/gm;
 
 // Valid commands
-const up = "\\033[A";
-const down = "\\033[B";
-const left = "\\033[D";
-const right = "\\033[C";
 const enter = "\r";
 
 let clientId = 0;
@@ -53,6 +49,9 @@ wss.on("connection", (ws) => {
 
   process.on("close", (code) => {
     console.log(`Child process ${process.pid} exited with code ${code}`);
+    console.log(`Closing WebSocket connection for client #${aClientId}...`);
+
+    ws?.close();
   });
 
   ws.on("error", console.error);
@@ -68,7 +67,7 @@ wss.on("connection", (ws) => {
   ws.on("close", () => {
     console.log(`Client #${aClientId} disconnected from WebSocket.`);
 
-    process.kill();
+    process?.kill();
   });
 });
 

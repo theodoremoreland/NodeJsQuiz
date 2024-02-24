@@ -1,10 +1,10 @@
+const startButton = document.querySelector("button");
+const textArea = document.querySelector("textarea");
 const linePrefix = "> ";
 const commandPrompt = `Node.js Quiz\n${linePrefix}`;
 const answerPrefix = "Answer: ";
 const linePrefixLength = linePrefix.length;
 const answerPrefixLength = answerPrefix.length;
-const startButton = document.querySelector("button");
-const textArea = document.querySelector("textarea");
 const ellipsisRegex = new RegExp("start[.]{1,3}$", "gm");
 const answerRegex = new RegExp(`${answerPrefix}(.*)$`, "gm");
 let loadingIntervalId;
@@ -28,15 +28,13 @@ const isValidAnswer = (answer) => {
 
 const startQuiz = () => {
   if (webSocket) {
-    startButton.textContent = "Start";
-    startButton.style.backgroundColor = "green";
-
     webSocket.close();
   } else {
     startButton.textContent = "Stop";
     startButton.style.backgroundColor = "red";
     textArea.value += "start";
 
+    // Add loading ellipsis
     loadingIntervalId = setInterval(() => {
       const lastThreeChars = textArea.value.slice(-3);
 
@@ -65,7 +63,15 @@ const startQuiz = () => {
     };
 
     webSocket.onclose = () => {
+      startButton.textContent = "Start";
+      startButton.style.backgroundColor = "green";
+      textArea.value = commandPrompt;
+      textArea.focus();
+
       console.log("WebSocket connection closed.");
+      clearInterval(loadingIntervalId);
+
+      webSocket = null;
     };
 
     webSocket.onerror = (error) => {
@@ -78,10 +84,12 @@ const startQuiz = () => {
 
 startButton.addEventListener("click", startQuiz);
 
+// Force cursor to end of textarea
 textArea.addEventListener("focus", () => {
   textArea.selectionStart = textArea.value.length;
 });
 
+// Force cursor to end of textarea
 textArea.addEventListener("click", () => {
   textArea.selectionStart = textArea.value.length;
 });
@@ -119,7 +127,6 @@ textArea.addEventListener("keyup", (event) => {
   const currentText = event.target.value;
 
   if (event.key === "Enter") {
-    // Send the message to the server.
     const answer = answerRegex.exec(currentText)[1]?.trim(); // Capture group at index 1
 
     if (answer && isValidAnswer(answer)) {
