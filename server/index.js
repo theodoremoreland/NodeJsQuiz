@@ -32,7 +32,7 @@ wss.on("connection", (ws) => {
   const process = spawn("node", [path.join(__dirname, "cli.js"), "-piped"]);
 
   process.stdout.on("data", (data) => {
-    const dataString = data.toString();
+    const dataString = data.toString("utf8");
     console.log(`Child process ${process.pid} stdout:\n${dataString}`);
 
     if (dataString[0] === "\x1b") {
