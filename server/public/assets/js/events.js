@@ -59,6 +59,7 @@ const startQuiz = () => {
       clearInterval(loadingIntervalId);
 
       textArea.value = textArea.value.replace(ellipsisRegex, "start");
+      textArea.scrollTop = textArea.scrollHeight; // Scroll to bottom of overflowed textarea
       textArea.focus();
     };
 
