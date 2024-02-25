@@ -5,6 +5,9 @@ const commandPrompt = `Node.js Quiz\n${linePrefix}`;
 const answerPrefix = "Answer: ";
 const linePrefixLength = linePrefix.length;
 const answerPrefixLength = answerPrefix.length;
+/** This is used to refresh on screen text while also popping and/or skipping text
+ * that is not needed.
+ */
 const messageHistoryStack = []; // Stack preserving websocket message history
 
 // Regular expressions
@@ -66,6 +69,10 @@ const startQuiz = () => {
     };
 
     webSocket.onmessage = (event) => {
+      /**
+       * Remove leading and trailing newline characters. Trim is not used
+       * because it will ruin formatting that leads with spaces or tabs.
+       */
       const data =
         event.data?.toString().replace(/\n+$/gm, "").replace(/^\n+/, "") || "";
       const isAnswer = answerRegex.test(data);
