@@ -66,7 +66,8 @@ const startQuiz = () => {
     };
 
     webSocket.onmessage = (event) => {
-      const data = event.data?.toString().replace(/\n+$/gm, "") || "";
+      const data =
+        event.data?.toString().replace(/\n+$/gm, "").replace(/^\n+/, "") || "";
       const isAnswer = answerRegex.test(data);
 
       /**
