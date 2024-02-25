@@ -13,6 +13,7 @@ const questionPromptRegex = new RegExp(`${answerPrefix}$`, "gm");
 const questionWithAnswerRegex = new RegExp(`(?<=${answerPrefix})[0-9]+`, "gm");
 
 const messageHistory = [];
+const questions = [];
 let loadingIntervalId;
 let webSocket;
 
@@ -67,31 +68,38 @@ const startQuiz = () => {
     };
 
     webSocket.onmessage = (event) => {
-      const data = event.data?.replace(/\n+$/gm, "") || "";
+      const data = event.data?.toString().replace(/\n+$/gm, "") || "";
       const isQuestion = questionRegex.test(data);
       const isQuestionPrompt = questionPromptRegex.test(data);
-      const isQuestionWithAnswer = questionWithAnswerRegex.test(data);
+      const isQuestionWithAnswer =
+        messageHistory[messageHistory.length - 1]?.includes("Answer: ") &&
+        data.includes("Answer: ");
 
       console.log("data:", data);
       console.log(`isQuestion`, isQuestion);
       console.log(`isQuestionPrompt`, isQuestionPrompt);
       console.log(`isQuestionWithAnswer`, isQuestionWithAnswer);
 
-      if (isQuestion) {
-        if (isQuestionWithAnswer) {
-          return;
-        } else {
-          textArea.value = "\n\n" + data;
-        }
-      } else {
-        textArea.value = "\n\n" + data;
+      if (isQuestionWithAnswer) {
+        return;
       }
+
+      if (isQuestion && !isQuestionPrompt) {
+        messageHistory.pop();
+      }
+
+      clearInterval(loadingIntervalId);
+
+      textArea.value = "";
+      messageHistory.push(data);
+
+      messageHistory.forEach((message) => {
+        textArea.value += "\n\n" + message;
+      });
 
       textArea.value = textArea.value.replace(ellipsisRegex, "start");
       textArea.scrollTop = textArea.scrollHeight; // Scroll to bottom of overflowed textarea
       textArea.focus();
-
-      clearInterval(loadingIntervalId);
     };
 
     webSocket.onclose = () => {
