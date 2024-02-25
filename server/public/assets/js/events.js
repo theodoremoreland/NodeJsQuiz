@@ -20,8 +20,8 @@ let webSocket;
 textArea.value = commandPrompt;
 
 const findAnswer = (message) => {
-  const answerSearch = questionWithAnswerRegex.exec(message);
-  const answer = answerSearch[0]?.trim(); // Capture group at index 1
+  const answerSearch = message.split("Answer: ");
+  const answer = answerSearch[answerSearch.length - 1]?.trim();
 
   return answer;
 };
@@ -80,12 +80,11 @@ const startQuiz = () => {
       console.log(`isQuestionPrompt`, isQuestionPrompt);
       console.log(`isQuestionWithAnswer`, isQuestionWithAnswer);
 
-      if (isQuestionWithAnswer) {
-        return;
-      }
-
-      if (isQuestion && !isQuestionPrompt) {
-        messageHistory.pop();
+      if (
+        messageHistory[messageHistory.length - 1] &&
+        questionRegex.test(messageHistory[messageHistory.length - 1])
+      ) {
+        console.log("popped", messageHistory.pop());
       }
 
       clearInterval(loadingIntervalId);
