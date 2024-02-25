@@ -49,7 +49,7 @@
     "correct_answer_index": 2,
     "choices": [
       "Piping is a system that allows you to pipe water into your computer for cooling.",
-      "Piping s a pattern of method chaining Promise objects.",
+      "Piping is a pattern of method chaining Promise objects.",
       "Piping is a mechanism that provides the output of one stream as the input to another stream."
     ],
     "difficulty": "moderate",
@@ -67,7 +67,7 @@
     "topics": ["Standard"]
   },
   {
-    "message": "The V8 engine...",
+    "message": "The V8 engine...?",
     "correct_answer_index": 0,
     "choices": [
       "Is a JS engine written in C++. V8 compiles JavaScript code into machine code at execution by implementing a JIT (Just-In-Time) compiler.",
@@ -140,7 +140,7 @@
     "topics": ["Packages"]
   },
   {
-    "message": "The purpose of npm audit is to...",
+    "message": "The purpose of npm audit is to...?",
     "correct_answer_index": 1,
     "choices": [
       "verify that all dependencies are the newest available versions.",

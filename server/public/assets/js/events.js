@@ -5,12 +5,25 @@ const commandPrompt = `Node.js Quiz\n${linePrefix}`;
 const answerPrefix = "Answer: ";
 const linePrefixLength = linePrefix.length;
 const answerPrefixLength = answerPrefix.length;
+
+// Regular expressions
 const ellipsisRegex = new RegExp("start[.]{1,3}$", "gm");
-const answerRegex = new RegExp(`${answerPrefix}(.*)$`, "gm");
+const questionRegex = new RegExp(`^[?] `);
+const questionPromptRegex = new RegExp(`${answerPrefix}$`, "gm");
+const questionWithAnswerRegex = new RegExp(`(?<=${answerPrefix})[0-9]+`, "gm");
+
+const messageHistory = [];
 let loadingIntervalId;
 let webSocket;
 
 textArea.value = commandPrompt;
+
+const findAnswer = (message) => {
+  const answerSearch = questionWithAnswerRegex.exec(message);
+  const answer = answerSearch[0]?.trim(); // Capture group at index 1
+
+  return answer;
+};
 
 const isValidAnswer = (answer) => {
   let isValid = false;
@@ -54,13 +67,31 @@ const startQuiz = () => {
     };
 
     webSocket.onmessage = (event) => {
-      textArea.value += "\n" + event.data;
+      const data = event.data?.replace(/\n+$/gm, "") || "";
+      const isQuestion = questionRegex.test(data);
+      const isQuestionPrompt = questionPromptRegex.test(data);
+      const isQuestionWithAnswer = questionWithAnswerRegex.test(data);
 
-      clearInterval(loadingIntervalId);
+      console.log("data:", data);
+      console.log(`isQuestion`, isQuestion);
+      console.log(`isQuestionPrompt`, isQuestionPrompt);
+      console.log(`isQuestionWithAnswer`, isQuestionWithAnswer);
+
+      if (isQuestion) {
+        if (isQuestionWithAnswer) {
+          return;
+        } else {
+          textArea.value = "\n\n" + data;
+        }
+      } else {
+        textArea.value = "\n\n" + data;
+      }
 
       textArea.value = textArea.value.replace(ellipsisRegex, "start");
       textArea.scrollTop = textArea.scrollHeight; // Scroll to bottom of overflowed textarea
       textArea.focus();
+
+      clearInterval(loadingIntervalId);
     };
 
     webSocket.onclose = () => {
@@ -128,10 +159,10 @@ textArea.addEventListener("keyup", (event) => {
   const currentText = event.target.value;
 
   if (event.key === "Enter") {
-    const answer = answerRegex.exec(currentText)[1]?.trim(); // Capture group at index 1
+    const answer = findAnswer(currentText);
 
     if (answer && isValidAnswer(answer)) {
-      webSocket.send(`${answer}`);
+      webSocket.send(answer);
     } else {
       textArea.value = currentText + "\n\n" + commandPrompt;
     }
