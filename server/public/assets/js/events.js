@@ -3,22 +3,31 @@ const textArea = document.querySelector("textarea");
 const linePrefix = "> ";
 const commandPrompt = `Node.js Quiz\n${linePrefix}`;
 const answerPrefix = "Answer: ";
+const invalidStdinMessage = ">> Please enter a valid index";
 const linePrefixLength = linePrefix.length;
 const answerPrefixLength = answerPrefix.length;
-/** This is used to refresh on screen text while also popping and/or skipping text
- * that is not needed.
- */
-const messageHistoryStack = []; // Stack preserving websocket message history
+const validQuizInputs = ["y", "n", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const validCommands = ["start", "help", "source", "github", "linkedin"];
 
 // Regular expressions
 const ellipsisRegex = new RegExp("start[.]{1,3}$", "gm");
 const questionRegex = new RegExp(`^[?] `);
 const answerRegex = new RegExp(`(?<=${answerPrefix}).+`, "gm");
 
+/** This is used to refresh on screen text while also popping and/or skipping text
+ * that is not needed.
+ */
+let messageHistoryStack = []; // Stack preserving websocket message history
+let isQuizRunning = false;
 let loadingIntervalId;
 let webSocket;
 
-textArea.value = commandPrompt;
+const findCommand = (message) => {
+  const commandSearch = message.split(linePrefix);
+  const command = commandSearch[commandSearch.length - 1]?.trim();
+
+  return command;
+};
 
 const findAnswer = (message) => {
   const answerSearch = message.split("Answer: ");
@@ -27,14 +36,20 @@ const findAnswer = (message) => {
   return answer;
 };
 
+const isValidCommand = (command) => {
+  let isValid = false;
+
+  if (validCommands.includes(command?.toLowerCase())) {
+    isValid = true;
+  }
+
+  return isValid;
+};
+
 const isValidAnswer = (answer) => {
   let isValid = false;
 
-  if (answer.toLowerCase() === "y" || answer.toLowerCase() === "n") {
-    isValid = true;
-  } else if (isNaN(answer)) {
-    isValid = false;
-  } else {
+  if (validQuizInputs.includes(answer?.toLowerCase())) {
     isValid = true;
   }
 
@@ -48,6 +63,9 @@ const startQuiz = () => {
     startButton.textContent = "Stop";
     startButton.style.backgroundColor = "red";
     textArea.value += "start";
+
+    messageHistoryStack = [];
+    messageHistoryStack.push(commandPrompt + "start");
 
     // Add loading ellipsis
     loadingIntervalId = setInterval(() => {
@@ -69,13 +87,18 @@ const startQuiz = () => {
     };
 
     webSocket.onmessage = (event) => {
+      isQuizRunning = true;
       /**
        * Remove leading and trailing newline characters. Trim is not used
        * because it will ruin formatting that leads with spaces or tabs.
        */
-      const data =
+      let data =
         event.data?.toString().replace(/\n+$/gm, "").replace(/^\n+/, "") || "";
       const isAnswer = answerRegex.test(data);
+
+      if (data.includes(invalidStdinMessage)) {
+        data += "\n" + "  Answer: ";
+      }
 
       /**
        * The client sends the answer to the server,
@@ -122,6 +145,7 @@ const startQuiz = () => {
     };
 
     webSocket.onclose = () => {
+      isQuizRunning = false;
       startButton.textContent = "Start";
       startButton.style.backgroundColor = "green";
       textArea.value = commandPrompt;
@@ -134,12 +158,11 @@ const startQuiz = () => {
     };
 
     webSocket.onerror = (error) => {
+      isQuizRunning = false;
       console.error(error);
 
       clearInterval(loadingIntervalId);
     };
-
-    messageHistoryStack.push(commandPrompt + "start");
   }
 };
 
@@ -188,12 +211,67 @@ textArea.addEventListener("keyup", (event) => {
   const currentText = event.target.value;
 
   if (event.key === "Enter") {
-    const answer = findAnswer(currentText);
+    if (isQuizRunning) {
+      const answer = findAnswer(currentText);
 
-    if (answer && isValidAnswer(answer)) {
-      webSocket.send(answer);
+      webSocket.send(answer || "");
     } else {
-      textArea.value = currentText + "\n\n" + commandPrompt;
+      const command = findCommand(currentText);
+
+      if (isValidCommand(command)) {
+        switch (command.toLowerCase()) {
+          case "start":
+            startQuiz();
+
+            break;
+          case "help":
+            textArea.value =
+              currentText +
+              "\n\n" +
+              "This program starts a Node.js CLI child process on an Express server that runs a Node.js quiz. With the aid of WebSocket API, you can start and stop the quiz, answer questions, and enter commands." +
+              "\n\nValid commands include:\n" +
+              validCommands.join("\n") +
+              "\n\n" +
+              commandPrompt;
+
+            break;
+          case "github":
+            textArea.value = currentText + "\n\n" + commandPrompt;
+            window.open("https://github.com/theodoremoreland", "_blank");
+
+            break;
+          case "linkedin":
+            textArea.value = currentText + "\n\n" + commandPrompt;
+            window.open(
+              "https://www.linkedin.com/in/theodore-moreland/",
+              "_blank"
+            );
+
+            break;
+          case "source":
+            textArea.value = currentText + "\n\n" + commandPrompt;
+            window.open(
+              "https://github.com/theodoremoreland/NodeJsQuiz",
+              "_blank"
+            );
+
+            break;
+          default:
+            textArea.value = currentText + "\n\n" + commandPrompt;
+        }
+      } else {
+        textArea.value =
+          currentText +
+          "\n\n" +
+          `Not a valid command. Valid commands include:\n${validCommands.join(
+            "\n"
+          )}` +
+          "\n\n" +
+          commandPrompt;
+      }
     }
   }
 });
+
+textArea.value = commandPrompt;
+textArea.focus();
