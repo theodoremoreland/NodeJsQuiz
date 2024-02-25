@@ -98,8 +98,14 @@ const startQuiz = () => {
       textArea.value = "";
       messageHistoryStack.push(data);
 
-      messageHistoryStack.forEach((message) => {
-        textArea.value += "\n\n" + message;
+      messageHistoryStack.forEach((message, index) => {
+        if (index === 0) {
+          textArea.value += message;
+
+          return;
+        }
+
+        textArea.value += "\n" + message;
       });
 
       textArea.value = textArea.value.replace(ellipsisRegex, "start");
@@ -124,6 +130,8 @@ const startQuiz = () => {
 
       clearInterval(loadingIntervalId);
     };
+
+    messageHistoryStack.push(commandPrompt + "start");
   }
 };
 
