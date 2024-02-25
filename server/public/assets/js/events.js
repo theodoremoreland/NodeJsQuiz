@@ -5,15 +5,13 @@ const commandPrompt = `Node.js Quiz\n${linePrefix}`;
 const answerPrefix = "Answer: ";
 const linePrefixLength = linePrefix.length;
 const answerPrefixLength = answerPrefix.length;
+const messageHistoryStack = []; // Stack preserving websocket message history
 
 // Regular expressions
 const ellipsisRegex = new RegExp("start[.]{1,3}$", "gm");
 const questionRegex = new RegExp(`^[?] `);
-const questionPromptRegex = new RegExp(`${answerPrefix}$`, "gm");
-const questionWithAnswerRegex = new RegExp(`(?<=${answerPrefix})[0-9]+`, "gm");
+const answerRegex = new RegExp(`(?<=${answerPrefix}).+`, "gm");
 
-const messageHistory = [];
-const questions = [];
 let loadingIntervalId;
 let webSocket;
 
@@ -69,30 +67,38 @@ const startQuiz = () => {
 
     webSocket.onmessage = (event) => {
       const data = event.data?.toString().replace(/\n+$/gm, "") || "";
-      const isQuestion = questionRegex.test(data);
-      const isQuestionPrompt = questionPromptRegex.test(data);
-      const isQuestionWithAnswer =
-        messageHistory[messageHistory.length - 1]?.includes("Answer: ") &&
-        data.includes("Answer: ");
+      const isAnswer = answerRegex.test(data);
 
-      console.log("data:", data);
-      console.log(`isQuestion`, isQuestion);
-      console.log(`isQuestionPrompt`, isQuestionPrompt);
-      console.log(`isQuestionWithAnswer`, isQuestionWithAnswer);
+      /**
+       * The client sends the answer to the server,
+       * then the server writes answer to the child process's stdin,
+       * which in turn writes the answer to the stdout of the child process,
+       * which is then sent back to the client.
+       * So, if the data received from the server is an answer, then we don't want to display it.
+       */
+      if (isAnswer) {
+        return;
+      }
 
+      /**
+       * Always remove the last message from the stack if it's a question as
+       * to only show the current question. Inquirer sometimes writes previously answered questions
+       * to stdout alongside the answer corresponding to the user's input. However,
+       * this has proven inconsistent and unreliable, so we'll just pop anything that
+       * features a question from the stack.
+       */
       if (
-        messageHistory[messageHistory.length - 1] &&
-        questionRegex.test(messageHistory[messageHistory.length - 1])
+        questionRegex.test(messageHistoryStack[messageHistoryStack.length - 1])
       ) {
-        console.log("popped", messageHistory.pop());
+        console.log("popped", messageHistoryStack.pop());
       }
 
       clearInterval(loadingIntervalId);
 
       textArea.value = "";
-      messageHistory.push(data);
+      messageHistoryStack.push(data);
 
-      messageHistory.forEach((message) => {
+      messageHistoryStack.forEach((message) => {
         textArea.value += "\n\n" + message;
       });
 
