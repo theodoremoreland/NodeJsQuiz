@@ -1,15 +1,18 @@
 # Node.js Quiz
 
-A Node.js quiz CLI program streamed to the browser via WebSocket, Express, and Node child_process.
-
 <img src="presentation/thumbnail.png" width="600">
 
 ## Table of Contents
 
+- [Overview](#overview)
 - [Technologies Used](#technologies-used)
 - [Screenshots](#screenshots)
 
 _This program was originally a homework assignment at LaunchCode's Lc101 (2019) originally named Candidate Testing_
+
+## Overview
+
+A webpage that allows the user to run a command line application for a Node.js quiz. The quiz runs in a command line environment via `child_process` module on a remote Express.js server. Once the command line application is started, its IO is synchronized with this webpage via WebSocket.
 
 ## Technologies Used
 
