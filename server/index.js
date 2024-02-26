@@ -75,7 +75,6 @@ app.get("/", (_, res) => {
   res.sendFile("index.html");
 });
 
-// server.on("request", app);
 server.listen(3000, () => {
   console.log("Listening on http://localhost:3000");
 });

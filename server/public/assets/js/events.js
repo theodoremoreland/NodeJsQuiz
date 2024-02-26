@@ -68,13 +68,21 @@ const isValidAnswer = (answer) => {
   return isValid;
 };
 
-const startQuiz = () => {
+/**
+ * Start or stop the quiz.
+ * @param {Event} event
+ * @returns {void}
+ */
+const startQuiz = (event) => {
   if (webSocket) {
     webSocket.close();
   } else {
     startButton.textContent = "Stop";
     startButton.style.backgroundColor = "red";
-    textArea.value += "start";
+
+    if (event) {
+      textArea.value = commandPrompt + "start";
+    }
 
     messageHistoryStack = [];
     messageHistoryStack.push(commandPrompt + "start");
