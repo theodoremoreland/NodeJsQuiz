@@ -8,6 +8,9 @@ const linePrefixLength = linePrefix.length;
 const answerPrefixLength = answerPrefix.length;
 const validQuizInputs = ["y", "n", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const validCommands = ["start", "help", "source", "github", "linkedin"];
+const helpMessage = `This webpage allows you to start a command line application of a Node.js quiz running on a remote Express.js server. Upon starting, the server will spawn a Node.js child process that runs the command line application. The command line application is then synchronized with this webpage via WebSocket. To start the application click the "Start" button or type the "start" command.\n\nAll valid commands:\n${validCommands.join(
+  "\n"
+)}`;
 
 // Regular expressions
 const ellipsisRegex = new RegExp("start[.]{1,3}$", "gm");
@@ -148,7 +151,7 @@ const startQuiz = () => {
       isQuizRunning = false;
       startButton.textContent = "Start";
       startButton.style.backgroundColor = "green";
-      textArea.value = commandPrompt;
+      textArea.value += "\n\n" + commandPrompt;
       textArea.focus();
 
       console.log("WebSocket connection closed.");
@@ -226,13 +229,7 @@ textArea.addEventListener("keyup", (event) => {
             break;
           case "help":
             textArea.value =
-              currentText +
-              "\n\n" +
-              "This program starts a Node.js CLI child process on an Express server that runs a Node.js quiz. With the aid of WebSocket API, you can start and stop the quiz, answer questions, and enter commands." +
-              "\n\nValid commands include:\n" +
-              validCommands.join("\n") +
-              "\n\n" +
-              commandPrompt;
+              currentText + "\n\n" + helpMessage + "\n\n" + commandPrompt;
 
             break;
           case "github":
