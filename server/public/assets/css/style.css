@@ -1,3 +1,18 @@
+@font-face {
+  font-family: regular;
+  src: url("../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf");
+}
+
+@font-face {
+  font-family: bold;
+  src: url("../fonts/Ubuntu_Mono/UbuntuMono-Bold.ttf");
+}
+
+@font-face {
+  font-family: italic;
+  src: url("../fonts/Ubuntu_Mono//UbuntuMono-Italic.ttf");
+}
+
 html,
 body {
   width: 100%;
@@ -5,6 +20,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  font-family: regular;
 }
 
 body {
@@ -33,6 +49,7 @@ button {
   color: white;
   border: none;
   border-radius: 20px;
+  font-family: bold;
 }
 
 button:hover {
