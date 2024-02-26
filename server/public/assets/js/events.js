@@ -15,7 +15,7 @@ const validCommands = {
   github: "Opens my GitHub profile.",
   linkedin: "Opens my LinkedIn profile.",
 };
-const helpMessage = `This webpage allows you to run a command line application for a Node.js quiz. The quiz runs in a command line environment on a remote Express.js server. Once the command line application is started, its IO is synchronized with this webpage via WebSocket. To start the application click the "Start" button (above) or type the "start" command.\n\nAll valid commands:\n${Object.entries(
+const helpMessage = `This webpage allows you to run a command line application for a Node.js quiz. The quiz runs in a command line environment on a remote Express.js server. Once the command line application is started, its IO is synchronized with this webpage via WebSocket. To start the application click the "Start" button (top of page) or type the "start" command.\n\nAll valid commands:\n${Object.entries(
   validCommands
 )
   .map(([key, value]) => `${key} - ${value}`)
