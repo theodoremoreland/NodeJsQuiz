@@ -7,10 +7,19 @@ const invalidStdinMessage = ">> Please enter a valid index";
 const linePrefixLength = linePrefix.length;
 const answerPrefixLength = answerPrefix.length;
 const validQuizInputs = ["y", "n", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-const validCommands = ["start", "help", "source", "github", "linkedin"];
-const helpMessage = `This webpage allows you to start a command line application of a Node.js quiz running on a remote Express.js server. Upon starting, the server will spawn a Node.js child process that runs the command line application. The command line application is then synchronized with this webpage via WebSocket. To start the application click the "Start" button or type the "start" command.\n\nAll valid commands:\n${validCommands.join(
-  "\n"
-)}`;
+const validCommands = {
+  start: "Will start the quiz.",
+  help: "Details application and commands.",
+  clear: "Clears text.",
+  source: "Opens GitHub repository of source code.",
+  github: "Opens my GitHub profile.",
+  linkedin: "Opens my LinkedIn profile.",
+};
+const helpMessage = `This webpage allows you to run a command line application for a Node.js quiz. The quiz runs in a command line environment on a remote Express.js server. Once the command line application is started, its IO is synchronized with this webpage via WebSocket. To start the application click the "Start" button (above) or type the "start" command.\n\nAll valid commands:\n${Object.entries(
+  validCommands
+)
+  .map(([key, value]) => `${key} - ${value}`)
+  .join("\n")}`;
 
 // Regular expressions
 const ellipsisRegex = new RegExp("start[.]{1,3}$", "gm");
@@ -42,7 +51,7 @@ const findAnswer = (message) => {
 const isValidCommand = (command) => {
   let isValid = false;
 
-  if (validCommands.includes(command?.toLowerCase())) {
+  if (Object.keys(validCommands).includes(command?.toLowerCase())) {
     isValid = true;
   }
 
@@ -253,18 +262,32 @@ textArea.addEventListener("keyup", (event) => {
             );
 
             break;
+          case "clear":
+            messageHistoryStack = [];
+            textArea.value = commandPrompt;
+            textArea.focus();
+
+            break;
           default:
-            textArea.value = currentText + "\n\n" + commandPrompt;
+          // This should never be reached
         }
+
+        textArea.scrollTop = textArea.scrollHeight; // Scroll to bottom of overflowed textarea
+        textArea.focus();
       } else {
         textArea.value =
           currentText +
           "\n\n" +
-          `Not a valid command. Valid commands include:\n${validCommands.join(
-            "\n"
-          )}` +
+          `Not a valid command. Valid commands include:\n${Object.entries(
+            validCommands
+          )
+            .map(([key, value]) => `${key} - ${value}`)
+            .join("\n")}` +
           "\n\n" +
           commandPrompt;
+
+        textArea.scrollTop = textArea.scrollHeight; // Scroll to bottom of overflowed textarea
+        textArea.focus();
       }
     }
   }
