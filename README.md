@@ -8,7 +8,7 @@
 - [Technologies Used](#technologies-used)
 - [Screenshots](#screenshots)
 
-_This program was originally a homework assignment at LaunchCode's Lc101 (2019) originally named "Candidate Testing", which was a Node.js based trivia quiz. Since then, this quiz was updated to test users on Node.js itself. Other features were also added._
+_This program was originally a homework assignment at LaunchCode's Lc101 (2019) originally named "Candidate Testing", which was a Node.js based trivia quiz. This quiz was updated to test users on Node.js itself. Other features were also added as described below._
 
 ## Overview
 
