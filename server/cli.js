@@ -139,7 +139,7 @@ const generateReport = (answers, data) => {
       question: question.message,
       answer,
       isCorrect: correctAnswer === answer,
-      score: correctAnswer === answer ? score : (score -= score / data.length),
+      score: correctAnswer === answer ? score : (score -= 100 / data.length),
     });
   }
 
