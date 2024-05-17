@@ -71,8 +71,36 @@ textarea {
   border: none;
   background-color: black;
   color: white;
-  font-size: 1rem;
+  /* The font size has to be absolute given the ASCII art graphic at the start of quiz. */
+  font-size: 10px;
   resize: none;
   outline: transparent;
   overflow-y: auto;
+}
+
+@media screen and (min-width: 340px) {
+  textarea {
+    /* Trying to increase size as much as possible prior to the recommended 16px. */
+    font-size: 11px;
+  }
+}
+
+@media screen and (min-width: 390px) {
+  textarea {
+    /* Trying to increase size as much as possible prior to the recommended 16px. */
+    font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 460px) {
+  textarea {
+    /* Trying to increase size as much as possible prior to the recommended 16px. */
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  textarea {
+    font-size: 16px;
+  }
 }
