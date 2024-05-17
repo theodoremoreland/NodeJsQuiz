@@ -44,6 +44,7 @@ header {
 }
 
 button {
+  cursor: pointer;
   padding: 0.55rem 1.5rem;
   background-color: green;
   color: white;
