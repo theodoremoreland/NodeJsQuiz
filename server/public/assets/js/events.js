@@ -234,6 +234,14 @@ textArea.addEventListener("keyup", (event) => {
     if (isQuizRunning) {
       const answer = findAnswer(currentText);
 
+      if (!isValidAnswer(answer)) {
+        textArea.value = `${currentText}\n${invalidStdinMessage}\n  Answer: `;
+        textArea.scrollTop = textArea.scrollHeight; // Scroll to bottom of overflowed textarea
+        textArea.focus();
+
+        return;
+      }
+
       webSocket.send(answer || "");
     } else {
       const command = findCommand(currentText);
