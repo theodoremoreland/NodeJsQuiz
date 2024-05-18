@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  node-js-quiz-service:
+    container_name: node-js-quiz-dev-container
+    build:
+      context: ..
+      dockerfile: ./docker/dev.Dockerfile
+    ports:
+      - 5000:5000

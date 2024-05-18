@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "*This program was a homework assignment at LaunchCode's Lc101 (2019)*",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
