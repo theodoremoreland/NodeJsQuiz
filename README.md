@@ -20,7 +20,18 @@ _This program was originally a homework assignment at LaunchCode's Lc101 (2019) 
 
 ### Via webpage
 
+1. Visit the webpage.
+2. Press the Start button or enter the `start` command.
+3. Answer all questions or press the Stop button to end the quiz.
+4. Repeat step 2. to restart.
+
 ### Via command line
+
+The steps below assumes you have git and Node.js installed on your machine.
+
+1. Clone this repository.
+2. Install necessary dependencies via executing npm install command in `/server` folder of this project on your machine.
+3. Execute `node cli.js`.
 
 ## Technologies Used
 
