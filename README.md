@@ -4,7 +4,7 @@ A Node.js quiz through a Node.js command line program. The program can be used d
 
 <img src="presentation/thumbnail.png" width="650">
 
-_This program was originally a homework assignment at LaunchCode's Lc101 (2019) originally named "Candidate Testing", which was a trivia quiz on random topics (written in Node.js). Since then, the subject of the quiz became Node.js itself and web client support was added._
+_This program is based on a homework assignment for LaunchCode's Lc101 (2019). The assignment was named "Candidate Testing", which involved creating a trivia quiz on random topics (written in Node.js)._
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ _This program was originally a homework assignment at LaunchCode's Lc101 (2019) 
 
 ## How to run locally
 
-**The steps below assume you have git Node.js and/or Docker installed on your machine.**
+**The steps below assume you have `git`, Node.js, and/or Docker installed on your machine.**
 
 ### Via webpage
 
