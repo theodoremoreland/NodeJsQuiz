@@ -4,11 +4,11 @@ A Node.js quiz through a Node.js command line program. The program can be used d
 
 <img src="presentation/thumbnail.png" width="650">
 
-_This program was originally a homework assignment at LaunchCode's Lc101 (2019) originally named "Candidate Testing", which was a trivia quiz on random topics (written in Node.js). Since then, the subject of the quiz became Node.js itself and web support was added._
+_This program was originally a homework assignment at LaunchCode's Lc101 (2019) originally named "Candidate Testing", which was a trivia quiz on random topics (written in Node.js). Since then, the subject of the quiz became Node.js itself and web client support was added._
 
 ## Table of Contents
 
-- [How to run](#how-to-run)
+- [How to run locally](#how-to-run-locally)
   - [Via webpage](#via-webpage)
   - [Via command line](#via-command-line)
 - [Technologies Used](#technologies-used)
@@ -16,18 +16,18 @@ _This program was originally a homework assignment at LaunchCode's Lc101 (2019) 
   - [Desktop](#desktop)
   - [Mobile](#mobile)
 
-## How to run
+## How to run locally
+
+**The steps below assume you have git Node.js and/or Docker installed on your machine.**
 
 ### Via webpage
 
 1. Visit the webpage.
 2. Press the Start button or enter the `start` command.
 3. Answer all questions or press the Stop button to end the quiz.
-4. Repeat step 2. to restart.
+4. Repeat step `2.` to restart.
 
 ### Via command line
-
-The steps below assumes you have git and Node.js installed on your machine.
 
 1. Clone this repository.
 2. Install necessary dependencies via executing npm install command in `/server` folder of this project on your machine.
