@@ -1,18 +1,26 @@
 # Node.js Quiz
 
-<img src="presentation/thumbnail.png" width="600">
+A Node.js quiz in the form of a Node.js command line program. The program can be used directly in a command line environment or indirectly via webpage. The latter leverages WebSockets and Node `child_process` to pipe input and output between web client and command line environment. The webpage is served using `Express.js`.
+
+<img src="presentation/thumbnail.png" width="650">
+
+_This program was originally a homework assignment at LaunchCode's Lc101 (2019) originally named "Candidate Testing", which was a trivia quiz on random topics (written in Node.js). Since then, the subject of the quiz became Node.js itself and web support was added._
 
 ## Table of Contents
 
-- [Overview](#overview)
+- [How to run](#how-to-run)
+  - [Via webpage](#via-webpage)
+  - [Via command line](#via-command-line)
 - [Technologies Used](#technologies-used)
 - [Screenshots](#screenshots)
+  - [Desktop](#desktop)
+  - [Mobile](#mobile)
 
-_This program was originally a homework assignment at LaunchCode's Lc101 (2019) originally named "Candidate Testing", which was a Node.js based trivia quiz. This quiz was updated to test users on Node.js itself. Other features were also added as described below._
+## How to run
 
-## Overview
+### Via webpage
 
-A webpage that allows the user to run a command line application for a Node.js quiz. The quiz runs in a command line environment via `child_process` module on a remote Express.js server. Once the command line application is started, its IO is synchronized with this webpage via WebSocket.
+### Via command line
 
 ## Technologies Used
 
@@ -24,6 +32,10 @@ A webpage that allows the user to run a command line application for a Node.js q
 - Express
 - ws (WebSocket)
 
-## Screenshots
+# Screenshots
+
+## Desktop
 
 <img src="presentation/thumbnail.png" width="600">
+
+## Mobile
