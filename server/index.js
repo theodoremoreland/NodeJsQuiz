@@ -12,6 +12,7 @@ import { WebSocketServer } from "ws";
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
+const port = 5000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -75,6 +76,6 @@ app.get("/", (_, res) => {
   res.sendFile("index.html");
 });
 
-server.listen(5000, () => {
-  console.log("Listening on http://localhost:3000");
+server.listen(port, () => {
+  console.log(`Listening on http://localhost:${port}...`);
 });
