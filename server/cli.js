@@ -195,6 +195,12 @@ const main = async () => {
 
     logResult(report);
 
+    // If the process is piped, then we can exit the process after the quiz is taken
+    // This is used to avoid formatting issues when syncing with the web client.
+    if (isPiped) {
+      process.exit(0);
+    }
+
     // Need to wrap await with parentheses as to access the retake property after the promise resolves
     takeQuiz = (
       await inquirer.prompt([
