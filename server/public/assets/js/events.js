@@ -1,5 +1,5 @@
 const hostname = window.location.hostname;
-const port = window.location.port || 5000;
+const port = window.location.port || 8080;
 const startButton = document.querySelector("button");
 const textArea = document.querySelector("textarea");
 const linePrefix = "> ";
@@ -102,7 +102,9 @@ const startQuiz = (event) => {
       }
     }, 300);
 
-    webSocket = new WebSocket(`ws://${hostname}:${port}`);
+    webSocket = hostname.includes("localhost")
+      ? new WebSocket(`ws://${hostname}:${port}`)
+      : new WebSocket(`ws://${hostname}`);
 
     webSocket.onopen = () => {
       console.log("WebSocket connection opened.");

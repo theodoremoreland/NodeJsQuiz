@@ -8,7 +8,7 @@ import { spawn } from "child_process";
 import express from "express";
 import { WebSocketServer } from "ws";
 
-const port = process?.env?.PORT ? Number(process.env.PORT) : 5000;
+const port = process?.env?.PORT ? Number(process.env.PORT) : 8080;
 
 // Server initialization
 const app = express();
