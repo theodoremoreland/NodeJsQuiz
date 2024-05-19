@@ -18,14 +18,14 @@ _This program is based on a homework assignment for LaunchCode's Lc101 (2019). T
 
 ## How to run locally
 
-**The steps below assume you have `git`, Node.js, and/or Docker installed on your machine.**
+**The steps below assume you have `git`, `Node.js`, and/or `Docker` installed on your machine.**
 
 ### Via webpage
 
 1. Visit the webpage.
 2. Press the Start button or enter the `start` command.
 3. Answer all questions or press the Stop button to end the quiz.
-4. Repeat step `2.` to restart.
+4. Repeat step `2` to restart.
 
 ### Via command line
 
