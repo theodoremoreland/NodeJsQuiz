@@ -5,4 +5,4 @@ WORKDIR /server
 COPY server/ ./
 RUN npm install
 
-CMD ["node", "index.js"]
+CMD ["node", "server.js"]
