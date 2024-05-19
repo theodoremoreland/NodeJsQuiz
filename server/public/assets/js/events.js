@@ -17,7 +17,7 @@ const validCommands = {
   github: "Opens my GitHub profile.",
   linkedin: "Opens my LinkedIn profile.",
 };
-const helpMessage = `This webpage allows you to run a command line application for a Node.js quiz. The quiz runs in a command line environment on a remote Express.js server. Once the command line application is started, its IO is synchronized with this webpage via WebSocket. To start the application click the "Start" button (top of page) or type the "start" command.\n\nAll valid commands:\n${Object.entries(
+const helpMessage = `This webpage allows you to run a command line application for a Node.js quiz. The quiz runs in a command line environment on a remote Express.js server. Once the command line application is started, its IO is synchronized with this webpage via WebSocket. To start the application click the "Start" button (top of page) or enter the "start" command.\n\nAll valid commands:\n${Object.entries(
   validCommands
 )
   .map(([key, value]) => `${key} - ${value}`)
@@ -80,7 +80,8 @@ const startQuiz = (event) => {
     webSocket.close();
   } else {
     startButton.textContent = "Stop";
-    startButton.style.backgroundColor = "red";
+    startButton.classList.remove("start");
+    startButton.classList.add("stop");
 
     if (event) {
       textArea.value = commandPrompt + "start";
@@ -171,7 +172,8 @@ const startQuiz = (event) => {
     webSocket.onclose = () => {
       isQuizRunning = false;
       startButton.textContent = "Start";
-      startButton.style.backgroundColor = "green";
+      startButton.classList.remove("stop");
+      startButton.classList.add("start");
       textArea.value += "\n\n" + commandPrompt;
       textArea.focus();
 
