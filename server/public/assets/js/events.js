@@ -1,3 +1,5 @@
+const hostname = window.location.hostname;
+const port = window.location.port || 5000;
 const startButton = document.querySelector("button");
 const textArea = document.querySelector("textarea");
 const linePrefix = "> ";
@@ -26,7 +28,6 @@ const ellipsisRegex = new RegExp("start[.]{1,3}$", "gm");
 const questionRegex = new RegExp(`^[?] `);
 const answerRegex = new RegExp(`(?<=${answerPrefix}).+`, "gm");
 
-const port = 5000;
 /** This is used to refresh on screen text while also popping and/or skipping text
  * that is not needed.
  */
@@ -101,7 +102,7 @@ const startQuiz = (event) => {
       }
     }, 300);
 
-    webSocket = new WebSocket(`ws://localhost:${port}`);
+    webSocket = new WebSocket(`ws://${hostname}:${port}`);
 
     webSocket.onopen = () => {
       console.log("WebSocket connection opened.");

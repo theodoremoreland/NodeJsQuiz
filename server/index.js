@@ -8,11 +8,12 @@ import { spawn } from "child_process";
 import express from "express";
 import { WebSocketServer } from "ws";
 
+const port = process?.env?.PORT ? Number(process.env.PORT) : 5000;
+
 // Server initialization
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
-const port = 5000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
