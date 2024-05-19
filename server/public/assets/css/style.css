@@ -19,6 +19,11 @@
   --color-background: #0d121c;
   --color-border: #2c3437;
   --color-font: #ffffff;
+
+  /* In case I want to switch back to the gradient background.
+  background: rgb(65,126,56);
+  background: radial-gradient(circle, rgba(65,126,56,1) 0%, rgba(13,18,28,1) 50%, rgba(13,18,28,1) 100%);
+  */
 }
 
 html,
