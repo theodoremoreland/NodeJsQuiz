@@ -5,7 +5,8 @@
   "description": "*This program was a homework assignment at LaunchCode's Lc101 (2019)*",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
