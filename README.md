@@ -6,6 +6,8 @@ A Node.js quiz through a Node.js command line program. The program can be used d
 
 _This program is based on a homework assignment for LaunchCode's Lc101 (2019). The assignment was named "Candidate Testing", which involved creating a trivia quiz on random topics (written in Node.js)._
 
+[Visit the live deployment](http://node-js-quiz.us-east-1.elasticbeanstalk.com/)
+
 ## Table of Contents
 
 - [How to run locally](#how-to-run-locally)
@@ -22,12 +24,33 @@ _This program is based on a homework assignment for LaunchCode's Lc101 (2019). T
 
 ### Via webpage
 
-1. Visit the webpage.
-2. Press the Start button or enter the `start` command.
-3. Answer all questions or press the Stop button to end the quiz.
-4. Repeat step `2` to restart.
+#### With Docker
+
+1. Clone this repository.
+2. cd into `docker` directory
+
+```
+cd /docker
+```
+
+3. Build docker image and start container
+
+```
+docker compose up --build
+```
+
+4. Visit http://localhost:8080
+
+#### With Node
+
+1. Clone this repository.
+2. Install necessary dependencies via executing npm install command in `/server` folder of this project on your machine.
+3. Execute `node server.js` or `npm start`.
+4. Visit http://localhost:8080
 
 ### Via command line
+
+#### With Node
 
 1. Clone this repository.
 2. Install necessary dependencies via executing npm install command in `/server` folder of this project on your machine.
