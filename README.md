@@ -77,3 +77,5 @@ docker compose up --build
 <img src="presentation/thumbnail.png" width="600">
 
 ## Mobile
+
+<img src="presentation/mobile.png" width="250">
