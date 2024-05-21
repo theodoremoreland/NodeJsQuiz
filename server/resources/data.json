@@ -185,7 +185,7 @@
   },
   {
     "message": "When would you use app.use()?",
-    "correct_answer_index": 1,
+    "correct_answer_index": 0,
     "choices": [
       "When mounting the specified middleware function(s) at the path which is being specified.",
       "When starting the server.",
