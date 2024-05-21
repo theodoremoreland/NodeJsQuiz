@@ -29,16 +29,19 @@ app.use(express.static(path.join(__dirname, "public")));
 
 wss.on("connection", (ws) => {
   const aClientId = ++clientId;
-  console.log(`Client #${aClientId} connected via WebSocket.`);
+  console.log(
+    `Client #${aClientId} connected via WebSocket. Spawning child process...`
+  );
 
   const process = spawn("node", [path.join(__dirname, "cli.js"), "-piped"]);
 
   process.stdout.on("data", (data) => {
     const dataString = data.toString("utf8");
+    const isPrecursorToEscapeSequence = dataString[0] === "\x1b";
+    const isNewline = dataString === "\n";
     console.log(`Child process ${process.pid} stdout:\n${dataString}`);
 
-    if (dataString[0] === "\x1b") {
-      // Skip sending data as the entire line is presumed to be an escape sequence.
+    if (isPrecursorToEscapeSequence || isNewline) {
       return;
     }
 
