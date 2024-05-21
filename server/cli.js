@@ -158,15 +158,28 @@ const logResult = (report) => {
   const questionsAnsweredIncorrectly = incorrectAnswers
     .map((report) => `- ${report.question}`)
     .join("\n");
+  // Variables below to store references with or without stdout escape sequences / stdout effects.
+  let gradeMessage;
+  let scoreMessage;
+  let incorrectAnswersMessage;
+
+  // If the process is piped, then we can avoid using escape sequences / stdout effects
+  if (isPiped) {
+    gradeMessage = `Grade: ${score}%`;
+    scoreMessage = `${score >= 70 ? "Passed" : "Failed"}`;
+    incorrectAnswersMessage = questionsAnsweredIncorrectly;
+  } else {
+    gradeMessage = blink(`Grade: ${score}%`);
+    scoreMessage = `${score >= 70 ? green("Passed") : red("Failed")}`;
+    incorrectAnswersMessage = red(questionsAnsweredIncorrectly);
+  }
 
   console.clear();
   console.log(`\n\nCorrect answers: ${correctAnswers.length}`);
   console.log(`Incorrect answers: ${incorrectAnswers.length}`);
-  console.log(blink(`Grade: ${score}%`));
-  console.log(`${score >= 70 ? green("Passed") : red("Failed")}`);
-  console.log(
-    `\nQuestions answered incorrectly:\n${red(questionsAnsweredIncorrectly)}`
-  );
+  console.log(gradeMessage);
+  console.log(scoreMessage);
+  console.log(`\nQuestions answered incorrectly:\n${incorrectAnswersMessage}`);
 };
 
 const main = async () => {
