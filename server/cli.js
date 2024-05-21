@@ -179,7 +179,12 @@ const logResult = (report) => {
   console.log(`Incorrect answers: ${incorrectAnswers.length}`);
   console.log(gradeMessage);
   console.log(scoreMessage);
-  console.log(`\nQuestions answered incorrectly:\n${incorrectAnswersMessage}`);
+
+  if (incorrectAnswers.length > 0) {
+    console.log(
+      `\nQuestions answered incorrectly:\n${incorrectAnswersMessage}`
+    );
+  }
 };
 
 const main = async () => {
