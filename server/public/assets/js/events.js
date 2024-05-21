@@ -8,7 +8,7 @@ const answerPrefix = "Answer: ";
 const invalidStdinMessage = ">> Please enter a valid index";
 const linePrefixLength = linePrefix.length;
 const answerPrefixLength = answerPrefix.length;
-const validQuizInputs = ["y", "n", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const validQuizInputs = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const validCommands = {
   start: "Will start the quiz.",
   help: "Details application and commands.",
