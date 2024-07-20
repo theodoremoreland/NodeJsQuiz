@@ -6,11 +6,13 @@ Given this project involves both a command line program and a web app, there are
 
 <img src="presentation/thumbnail.png" width="650">
 
-[Visit the live deployment here](http://node-js-quiz.us-east-1.elasticbeanstalk.com/)
+[View the web application](http://node-js-quiz.us-east-1.elasticbeanstalk.com/)
 
 _This program is based on a homework assignment for LaunchCode's Lc101 (2019). The assignment was named "Candidate Testing", which involved creating a trivia quiz on random topics (written in Node.js)._
 
 ## Table of Contents
+
+[View the web application](http://node-js-quiz.us-east-1.elasticbeanstalk.com/)
 
 - [Technologies Used](#technologies-used)
 - [How to run locally](#how-to-run-locally)
