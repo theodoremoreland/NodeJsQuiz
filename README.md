@@ -17,6 +17,8 @@ _This program is based on a homework assignment for LaunchCode's Lc101 (2019). T
 - [Technologies Used](#technologies-used)
 - [How to run locally](#how-to-run-locally)
   - [Via web app](#via-web-app)
+    - [With Docker](#with-docker)
+    - [With Node](#with-node)
   - [Via command line](#via-command-line)
 - [Screenshots](#screenshots)
   - [Desktop](#desktop)
